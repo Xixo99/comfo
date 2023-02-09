@@ -1,0 +1,9 @@
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-replay-v2 --config.seed=0 --config.conservative_weight=3;
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-replay-v2 --config.seed=0 --config.conservative_weight=10;
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-replay-v2 --config.seed=0 --config.conservative_weight=1;
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=walker2d-medium-replay-v2 --config.seed=0 --config.conservative_weight=10;
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=walker2d-medium-replay-v2 --config.seed=0 --config.conservative_weight=3;
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=walker2d-medium-replay-v2 --config.seed=0 --config.conservative_weight=1;
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=halfcheetah-medium-replay-v2 --config.seed=0 --config.conservative_weight=10;
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=halfcheetah-medium-replay-v2 --config.seed=0 --config.conservative_weight=3;
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=halfcheetah-medium-replay-v2 --config.seed=0 --config.conservative_weight=1;

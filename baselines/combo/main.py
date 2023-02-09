@@ -9,15 +9,21 @@ FLAGS = flags.FLAGS
 
 
 conf_dict = {
+    "walker2d-random-v2":           {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 3.0, "horizon": 1, "rollout_random": False},
     "walker2d-medium-v2":           {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 3.0, "horizon": 1, "rollout_random": False},
     "walker2d-medium-replay-v2":    {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 1.0, "horizon": 1, "rollout_random": False},
     "walker2d-medium-expert-v2":    {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 3.0, "horizon": 1, "rollout_random": False},
+    "walker2d-expert-v2":           {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 3.0, "horizon": 1, "rollout_random": False},
+    "hopper-random-v2":             {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 3.0, "horizon": 5, "rollout_random": False},
     "hopper-medium-v2":             {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 3.0, "horizon": 5, "rollout_random": False},
     "hopper-medium-replay-v2":      {"lr_actor": 1e-4, "lr_critic": 3e-4, "min_q_weight": 1.0, "horizon": 5, "rollout_random": True},
     "hopper-medium-expert-v2":      {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 3.0, "horizon": 3, "rollout_random": False},
+    "hopper-expert-v2":             {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 3.0, "horizon": 3, "rollout_random": False},
+    "halfcheetah-random-v2":        {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 1.0, "horizon": 5, "rollout_random": False},
     "halfcheetah-medium-v2":        {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 1.0, "horizon": 5, "rollout_random": False},
     "halfcheetah-medium-replay-v2": {"lr_actor": 1e-4, "lr_critic": 3e-4, "min_q_weight": 1.0, "horizon": 5, "rollout_random": False},
     "halfcheetah-medium-expert-v2": {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 5.0, "horizon": 5, "rollout_random": False},
+    "halfcheetah-expert-v2":        {"lr_actor": 1e-5, "lr_critic": 1e-4, "min_q_weight": 5.0, "horizon": 5, "rollout_random": False},
 }
 
 

@@ -39,6 +39,8 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
     ckpt_dir = f"{configs.model_dir}/{configs.env_name}/{exp_name}"
     print('#'*len(exp_info) + f'\n{exp_info}\n' + '#'*len(exp_info))
 
+    dynamics_model_dir = f"{configs.dynamics_model_dir}"
+
     logger = get_logger(f'logs/{configs.env_name}/{exp_name}.log')
     logger.info(f"Exp configurations:\n{configs}")
 
@@ -73,14 +75,15 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
                        batch_size=configs.batch_size,
                        rollout_batch_size=configs.rollout_batch_size,
                        rollout_random=configs.rollout_random,
-                       hidden_dims=configs.hidden_dims,
+                       hidden_dims=configs.hidden_dims, 
+                       dynamics_model_dir=dynamics_model_dir,
                        initializer=configs.initializer)
 
     # Train the model
-    # agent.model.train()
+    agent.model.train()
 
     # Load the trained dynamics model
-    agent.model.load(f'saved_dynamics_models/{configs.env_name}')
+    agent.model.load(agent.model.get_save_dir())
 
     # Print model architecture
     logger.info(f"\nThe actor architecture is:\n{jax.tree_map(lambda x: x.shape, agent.actor_state.params)}")
@@ -158,3 +161,5 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
 
     log_df = pd.DataFrame(logs)
     log_df.to_csv(f"{configs.log_dir}/{configs.env_name}/{exp_name}.csv")
+    final_reward = log_df["reward"].iloc[-10:].mean()
+    logger.info(f"\nAvg eval reward = {final_reward:.2f}\n")

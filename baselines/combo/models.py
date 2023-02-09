@@ -223,7 +223,8 @@ class DynamicsModel:
         self.replay_buffer.convert_D4RL(d4rl.qlearning_dataset(self.env))
 
         # Initilaize saving settings
-        self.save_dir = f"{model_dir}/{env_name}/s{seed}"
+        #self.save_dir = f"{model_dir}/{env_name}/s{seed}"
+        self.save_dir = f"{model_dir}/{env_name}"
         self.elite_mask = np.eye(self.ensemble_num)[range(elite_num), :]
 
         # Initilaize the ensemble model
@@ -241,6 +242,9 @@ class DynamicsModel:
         # Normalize inputs
         self.obs_mean = None
         self.obs_std = None 
+
+    def get_save_dir(self):
+        return self.save_dir
 
     def load(self, filename):
         step = max([int(i.split("_")[-1]) for i in os.listdir(filename) if "dynamics_model_" in i])
@@ -273,12 +277,13 @@ class DynamicsModel:
                 inv_var = jnp.exp(-log_var)    # (7, 12)
                 mse_loss = jnp.square(mu - y)  # (7, 12)
                 train_loss = jnp.mean(mse_loss * inv_var + log_var, axis=-1).sum() 
-                delta_log_var = self.model.apply({"params": params}, method=self.model.delta_log_var)
-                train_loss += 0.01 * delta_log_var
+                #delta_log_var = self.model.apply({"params": params}, method=self.model.delta_log_var)
+                #train_loss += 0.01 * delta_log_var
                 return train_loss, {"mse_loss": mse_loss.mean(),
                                     "var_loss": log_var.mean(),
-                                    "train_loss": train_loss,
-                                    "delta_log_var": delta_log_var}
+                                    "train_loss": train_loss}
+                                    #"train_loss": train_loss,
+                                    #"delta_log_var": delta_log_var}
             grad_fn = jax.vmap(jax.value_and_grad(loss_fn, has_aux=True), in_axes=(None, 1, 1))
             (_, log_info), gradients = grad_fn(model_state.params, batch_inputs, batch_targets)
             log_info = jax.tree_map(functools.partial(jnp.mean, axis=0), log_info)
@@ -305,7 +310,8 @@ class DynamicsModel:
         for epoch in trange(self.epochs):
             shuffled_idxs = np.concatenate([np.random.permutation(np.arange(
                 inputs.shape[0])).reshape(1, -1) for _ in range(self.ensemble_num)], axis=0)  # (7, 1000000)
-            train_loss, mse_loss, var_loss, delta_log_var = [], [], [], []
+            #train_loss, mse_loss, var_loss, delta_log_var = [], [], [], []
+            train_loss, mse_loss, var_loss = [], [], []
             for i in range(batch_num):
                 batch_idxs = shuffled_idxs[:, i*self.batch_size:(i+1)*self.batch_size]
                 batch_inputs = inputs[batch_idxs]    # (7, 256, 14)
@@ -314,7 +320,7 @@ class DynamicsModel:
                 train_loss.append(log_info["train_loss"].item())
                 mse_loss.append(log_info["mse_loss"].item())
                 var_loss.append(log_info["var_loss"].item())
-                delta_log_var.append(log_info["delta_log_var"].item())
+                # delta_log_var.append(log_info["delta_log_var"].item())
 
             val_loss, val_info = eval_step(self.model_state, holdout_inputs, holdout_targets)
             val_loss = jnp.mean(val_loss, axis=0)  # (N, 7) ==> (7,)
@@ -335,7 +341,7 @@ class DynamicsModel:
                   f"train_loss={sum(train_loss)/batch_num:.3f}\t"
                   f"mse_loss={sum(mse_loss)/batch_num:.3f}\t"
                   f"var_loss={sum(var_loss)/batch_num:.3f}\t"
-                  f"delta_log_var={sum(delta_log_var)/batch_num:.3f}\t"
+                  # f"delta_log_var={sum(delta_log_var)/batch_num:.3f}\t"
                   f"val_loss={mean_val_loss:.3f}\t"
                   f"val_rew_loss={val_info['reward_loss']:.3f}\t"
                   f"val_state_loss={val_info['state_loss']:.3f}")
@@ -351,7 +357,7 @@ class DynamicsModel:
         with open(f"{self.save_dir}/elite_models.txt", "w") as f:
             for idx in elite_models:
                 f.write(f"{idx}\n")
-        elite_idx = elite_models.to_py()[:self.elite_num]
+        elite_idx = np.asarray(elite_models)[:self.elite_num]
         self.elite_mask = np.eye(self.ensemble_num)[elite_idx, :]
         np.savez(f"{self.save_dir}/normalize_stat", obs_mean=self.obs_mean, obs_std=self.obs_std)
 

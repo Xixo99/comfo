@@ -1,0 +1,3 @@
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=walker2d-medium-v2 --config.seed=0  --config.conservative_weight=1;
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=walker2d-medium-v2 --config.seed=1  --config.conservative_weight=1;
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=walker2d-medium-v2 --config.seed=2  --config.conservative_weight=1;
