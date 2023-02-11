@@ -1,18 +1,15 @@
-from utils import ReplayBuffer, get_logger
-from models import RIQLAgent
-from tqdm import trange
-import pandas as pd
-import time
-import d4rl
-import gym
-import ml_collections
 from typing import Tuple
-import os
-os.environ["XLA_PYTHON_CLIENT_MEM_FRACTION"] = ".2"
+import ml_collections
+import gym
+import d4rl
+import time
+import pandas as pd
+from tqdm import trange
+from models import COMFOAgent
+from utils import ReplayBuffer, get_logger
 
 
 def normalize_rewards(replay_buffer: ReplayBuffer, env_name: str):
-    # mujoco environments
     normalize_info_df = pd.read_csv(
         'configs/minmax_traj_reward.csv', index_col=0).set_index('env_name')
     min_traj_reward, max_traj_reward = normalize_info_df.loc[env_name, [
@@ -21,7 +18,7 @@ def normalize_rewards(replay_buffer: ReplayBuffer, env_name: str):
         (max_traj_reward - min_traj_reward) * 1000
 
 
-def eval_policy(agent, env: gym.Env, eval_episodes: int = 10) -> Tuple[float, float]:
+def eval_policy(agent: COMFOAgent, env: gym.Env, eval_episodes: int = 10) -> Tuple[float, float]:
     t1 = time.time()
     avg_reward = 0.
     for _ in range(eval_episodes):
@@ -38,15 +35,12 @@ def eval_policy(agent, env: gym.Env, eval_episodes: int = 10) -> Tuple[float, fl
 def train_and_evaluate(configs: ml_collections.ConfigDict):
     start_time = time.time()
     timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
-    if configs.algo in ['agent4', 'agent5']:
-        exp_name = f'{configs.algo}_s{configs.seed}_mlea{configs.mle_alpha}_{timestamp}'
-    else:
-        exp_name = f'{configs.algo}_s{configs.seed}_{timestamp}'
+    exp_name = f'{configs.algo}_seed{configs.seed}_{timestamp}'
     exp_info = f'# Running experiment for: {exp_name}_{configs.env_name} #'
     ckpt_dir = f"{configs.model_dir}/{configs.env_name}/{exp_name}"
     print('#'*len(exp_info) + f'\n{exp_info}\n' + '#'*len(exp_info))
 
-    logger = get_logger(f'logs/{configs.env_name}/{exp_name}.log')
+    logger = get_logger(f'{configs.log_dir}/{configs.env_name}/{exp_name}.log')
     logger.info(f"Exp configurations:\n{configs}")
 
     # initialize the d4rl environment
@@ -55,19 +49,20 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
     act_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    agent = RIQLAgent(obs_dim=obs_dim,
-                      act_dim=act_dim,
-                      max_action=max_action,
-                      hidden_dims=configs.hidden_dims,
-                      seed=configs.seed,
-                      lr=configs.lr,
-                      tau=configs.tau,
-                      gamma=configs.gamma,
-                      expectile=configs.expectile,
-                      temperature=configs.temperature,
-                      max_timesteps=configs.max_timesteps,
-                      mle_alpha=configs.mle_alpha,
-                      initializer=configs.initializer)
+    agent = COMFOAgent(obs_dim=obs_dim,
+                       act_dim=act_dim,
+                       max_action=max_action,
+                       hidden_dims=configs.hidden_dims,
+                       seed=configs.seed,
+                       lr=configs.lr,
+                       tau=configs.tau,
+                       gamma=configs.gamma,
+                       expectile=configs.expectile,
+                       temperature=configs.temperature,
+                       max_timesteps=configs.max_timesteps,
+                       conservative_weight=configs.conservative_weight,
+                       num_random=configs.num_random,
+                       initializer=configs.initializer)
 
     # replay buffer
     replay_buffer = ReplayBuffer(obs_dim, act_dim)
@@ -82,8 +77,8 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
         log_info = agent.update(batch)
 
         # Save every 1e5 steps & last 5 checkpoints
-        if (t % 100000 == 0) or (t >= int(9.8e5) and t % 5000 == 0):
-            agent.save(f"{ckpt_dir}", t // 5000)
+        # if (t % 100000 == 0) or (t >= int(9.8e5) and t % 5000 == 0):
+        #     agent.save(f"{ckpt_dir}", t // 5000)
 
         if (t > int(9.5e5) and (t % configs.eval_freq == 0)) or (t <= int(9.5e5) and t % (2*configs.eval_freq) == 0):
             eval_reward, eval_time = eval_policy(
@@ -98,15 +93,15 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
             logger.info(
                 f"\n[#Step {t}] eval_reward: {eval_reward:.3f}, eval_time: {eval_time:.3f}, time: {log_info['time']:.3f}\n"
                 f"\tcritic_loss: {log_info['critic_loss']:.3f}, max_critic_loss: {log_info['max_critic_loss']:.3f}, min_critic_loss: {log_info['min_critic_loss']:.3f}\n"
-                f"\tactor_loss: {log_info['actor_loss']:.3f}, max_actor_loss: {log_info['max_actor_loss']:.3f}, min_actor_loss: {log_info['min_actor_loss']:.3f}\n"
+                f"\tactor_loss: {log_info['actor_loss']:.3f}\n"
                 f"\tvalue_loss: {log_info['value_loss']:.3f}, max_value_loss: {log_info['max_value_loss']:.3f}, min_value_loss: {log_info['min_value_loss']:.3f}\n"
                 f"\tweight: {log_info['weight']:.3f}, max_weight: {log_info['max_weight']:.3f}, min_weight: {log_info['min_weight']:.3f}\n"
                 f"\tv: {log_info['v']:.3f}, max_v: {log_info['max_v']:.3f}, min_v: {log_info['min_v']:.3f}\n"
                 f"\tq1: {log_info['q1']:.3f}, max_q1: {log_info['max_q1']:.3f}, min_q1: {log_info['min_q1']:.3f}\n"
                 f"\tq2: {log_info['q2']:.3f}, max_q2: {log_info['max_q2']:.3f}, min_q2: {log_info['min_q2']:.3f}\n"
+                f"\tavg_conservative_loss: {log_info['avg_conservative_loss']:.3f}\n"
                 f"\ttarget_q: {log_info['target_q']:.3f}, max_target_q: {log_info['max_target_q']:.3f}, min_target_q: {log_info['min_target_q']:.3f}\n"
             )
-
     log_df = pd.DataFrame(logs)
     final_reward = log_df["reward"].iloc[-10:].mean()
     log_df.to_csv(

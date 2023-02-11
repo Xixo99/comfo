@@ -165,6 +165,56 @@ class Actor(nn.Module):
         return sampled_actions * self.max_action, log_probs
 
 
+#############
+# New Actor #
+#############
+# class Sac_Actor(nn.Module):
+#     act_dim: int
+#     max_action: float = 1.0
+#     hidden_dims: Sequence[int] = (256, 256, 256)
+#     initializer: str = "orthogonal"
+
+#     def setup(self):
+#         self.net = MLP(self.hidden_dims, init_fn=init_fn(
+#             self.initializer), activate_final=True)
+#         self.mu_layer = nn.Dense(
+#             self.act_dim, kernel_init=init_fn(self.initializer, 1e-2))
+#         self.std_layer = nn.Dense(
+#             self.act_dim, kernel_init=init_fn(self.initializer, 1e-2))
+
+#     def __call__(self, rng: Any, observation: jnp.ndarray) -> jnp.ndarray:
+#         x = self.net(observation)
+#         mu = self.mu_layer(x)
+#         log_std = self.std_layer(x)
+#         log_std = jnp.clip(log_std, LOG_STD_MIN, LOG_STD_MAX)
+#         std = jnp.exp(log_std)
+
+#         mean_action = nn.tanh(mu)
+#         action_distribution = distrax.Transformed(
+#             distrax.MultivariateNormalDiag(mu, std),
+#             distrax.Block(distrax.Tanh(), ndims=1))
+#         sampled_action, logp = action_distribution.sample_and_log_prob(
+#             seed=rng)
+#         return mean_action*self.max_action, sampled_action*self.max_action, logp
+
+#     def get_logp(self, observation: jnp.ndarray, action: jnp.ndarray) -> jnp.ndarray:
+#         x = self.net(observation)
+#         mu = self.mu_layer(x)
+#         log_std = self.std_layer(x)
+#         log_std = jnp.clip(log_std, LOG_STD_MIN, LOG_STD_MAX)
+#         std = jnp.exp(log_std)
+#         action_distribution = distrax.Normal(mu, std)
+#         raw_action = atanh(action)
+#         logp = action_distribution.log_prob(raw_action).sum(-1)
+#         logp -= 2*(jnp.log(2) - raw_action -
+#                    jax.nn.softplus(-2*raw_action)).sum(-1)
+#         return logp
+
+#     def encode(self, observations):
+#         embeddings = self.net(observations)
+#         return embeddings
+
+
 ###############
 # COMFO Agent #
 ###############
@@ -266,41 +316,24 @@ class COMFOAgent:
                          value_params: FrozenDict,
                          critic_target_params: FrozenDict) -> Tuple[Dict, train_state.TrainState]:
         # note: update \pi with perterbation observations
-        self.key_seed, new_key = jax.random.split(self.key_seed, 2)
-        perturbation = jax.random.uniform(
-            new_key, jnp.shape(batch.observations), minval=-self.noise_scale, maxval=self.noise_scale)
-        v = self.value.apply({"params": value_params},
-                             batch.observations+perturbation)
-        q1, q2 = self.critic.apply({"params": critic_target_params},
-                                   batch.observations+perturbation, batch.actions)
-        q = jnp.minimum(q1, q2)
-        exp_a = jnp.exp((q - v) * self.temperature)
-        exp_a = jnp.minimum(exp_a, 100.0)
-
         def loss_fn(params):
-            log_prob = self.actor.apply({"params": params},
-                                        batch.observations,
-                                        batch.actions,
-                                        method=Actor.get_log_prob)
-            actor_loss = -exp_a * log_prob
-            avg_actor_loss = actor_loss.mean()
+            self.key_seed, new_key = jax.random.split(self.key_seed, 2)
+            perturbation = jax.random.uniform(
+                new_key, jnp.shape(batch.observations), minval=-self.noise_scale, maxval=self.noise_scale)
+            actions = self.actor.apply({"params": params},
+                                        batch.observations)
+            q1, q2 = self.critic.apply({"params": critic_target_params},
+                                       batch.observations+perturbation, actions)
+            q = jnp.minimum(q1, q2)
+            avg_actor_loss = -(q).mean()
             return avg_actor_loss, {
                 "actor_loss": avg_actor_loss,
-                "max_actor_loss": actor_loss.max(),
-                "min_actor_loss": actor_loss.min(),
-                "exp_a": exp_a.mean(),
-                "max_exp_a": exp_a.max(),
-                "min_exp_a": exp_a.min(),
-                "adv": (q-v).mean(),
-                "max_adv": (q-v).max(),
-                "min_adv": (q-v).min(),
-                "log_prob": log_prob.mean(),
-                "max_log_prob": log_prob.max(),
-                "min_log_prob": log_prob.min(),
+                "adv": (q).mean(),
+                "max_adv": (q).max(),
+                "min_adv": (q).min(),
             }
         (_, actor_info), actor_grads = jax.value_and_grad(
             loss_fn, has_aux=True)(actor_state.params)
-        
         actor_state = actor_state.apply_gradients(grads=actor_grads)
         return actor_info, actor_state
 

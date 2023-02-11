@@ -5,7 +5,7 @@ def get_config():
     config = ml_collections.ConfigDict()
     config.conservative_weight = 1
     config.env_name = "halfcheetah-medium-expert-v2"
-    info = f"20230209"
+    info = f"20230210_"
     config.log_dir = f"logs/{info}"
     config.algo = "comfo"
     config.model_dir = f"saved_models/{info}"

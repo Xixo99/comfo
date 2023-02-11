@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-replay-v2 --config.seed=0  --config.algo=riql  --config.mle_alpha=0.1  --config.initializer=orthogonal
