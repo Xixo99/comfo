@@ -250,7 +250,7 @@ class COMFO6Agent:
         self.tau = tau
 
         self.num_random = 10
-        self.noise_scale = 0.001
+        self.noise_scale = 0.01
 
         # MLE
         self.mle_alpha = mle_alpha

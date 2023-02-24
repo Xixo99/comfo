@@ -436,7 +436,7 @@ class COMFO7Agent:
             # if avg_conservative_loss < -10.0:
             #     self.conservative_weight /= 2
 
-            return avg_critic_loss+self.conservative_weight*avg_conservative_loss+avg_smooth_loss, {
+            return avg_critic_loss+self.conservative_weight*avg_conservative_loss+0.0001*avg_smooth_loss, {
                 "critic_loss": avg_critic_loss,
                 "max_critic_loss": critic_loss.max(),
                 "min_critic_loss": critic_loss.min(),
