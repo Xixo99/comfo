@@ -12,7 +12,7 @@ mle_alphas = {
     "halfcheetah-medium-v2": 0.1,
     "halfcheetah-medium-replay-v2": 0.25,
     "halfcheetah-medium-expert-v2": 1.0,
-    "hopper-medium-v2": 1.0,
+    "hopper-medium-v2": 0.75,
     "hopper-medium-replay-v2": 0.25,
     "hopper-medium-expert-v2": 1.0,
     "walker2d-medium-v2": 1.0,
@@ -21,10 +21,9 @@ mle_alphas = {
 }
 
 
-
 def main(argv):
     configs = FLAGS.config
-    configs.mle_alpha = mle_alphas[configs.env_name]
+    # configs.mle_alpha = mle_alphas[configs.env_name]
     os.makedirs(f"{configs.log_dir}/{configs.env_name}", exist_ok=True)
     os.makedirs(f"{configs.model_dir}/{configs.env_name}", exist_ok=True)
     train.train_and_evaluate(configs)

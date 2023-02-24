@@ -24,6 +24,7 @@ mle_alphas = {
 
 def main(argv):
     configs = FLAGS.config
+    # configs.mle_alpha = mle_alphas[configs.env_name]
     configs.mle_alpha = mle_alphas[configs.env_name]
     os.makedirs(f"{configs.log_dir}/{configs.env_name}", exist_ok=True)
     os.makedirs(f"{configs.model_dir}/{configs.env_name}", exist_ok=True)

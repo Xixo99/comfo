@@ -1,0 +1,6 @@
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=3  --config.algo=riql  --config.mle_alpha=0.1  --config.initializer=orthogonal
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=4  --config.algo=riql  --config.mle_alpha=0.1  --config.initializer=orthogonal
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=5  --config.algo=riql  --config.mle_alpha=0.1  --config.initializer=orthogonal
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=6  --config.algo=riql  --config.mle_alpha=0.1  --config.initializer=orthogonal
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=7  --config.algo=riql  --config.mle_alpha=0.1  --config.initializer=orthogonal
+CUDA_VISIBLE_DEVICES=1 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=8  --config.algo=riql  --config.mle_alpha=0.1  --config.initializer=orthogonal

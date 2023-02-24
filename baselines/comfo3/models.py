@@ -238,8 +238,8 @@ class COMFO3Agent:
                  expectile: float,
                  temperature: float,
                  max_timesteps: int,
-                 mle_alpha: float = 1.0,
-                 conservative_weight: float = 1,
+                 mle_alpha: float = 0.1,
+                 conservative_weight: float = 1.0,
                  noise_scale: float = 0.001,
                  initializer: str = "orthogonal"):
 
@@ -428,10 +428,12 @@ class COMFO3Agent:
                 "q2": q2.mean(), "max_q2": q2.max(), "min_q2": q2.min(),
                 "target_q": target_q.mean(), "max_target_q": target_q.max(), "min_target_q": target_q.min(),
             }
-        
+
         (_, critic_info), critic_grads = jax.value_and_grad(
             loss_fn, has_aux=True)(critic_state.params)
         critic_state = critic_state.apply_gradients(grads=critic_grads)
+        # if avg_conservative_loss < 10.0:
+        #     self.conservative_weight /= 2
         return critic_info, critic_state
 
     @functools.partial(jax.jit, static_argnames=("self"))
@@ -465,6 +467,7 @@ class COMFO3Agent:
                                                                 self.critic_state,
                                                                 self.critic_target_params)
         if log_info['avg_conservative_loss'] < -10.0:
+            # print("**avg_conservative_loss")
             self.conservative_weight /= 2
         return log_info
 

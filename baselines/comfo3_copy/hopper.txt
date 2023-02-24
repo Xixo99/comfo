@@ -1,0 +1,10 @@
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=3 --config.mle_alpha=0.25
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=4 --config.mle_alpha=0.25
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=3 --config.mle_alpha=0.5
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=4 --config.mle_alpha=0.5
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=3 --config.mle_alpha=0.75
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=4 --config.mle_alpha=0.75
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=3 --config.mle_alpha=2
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=4 --config.mle_alpha=2
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=3 --config.mle_alpha=1.5
+CUDA_VISIBLE_DEVICES=0 python main.py --config=configs/mujoco.py --config.env_name=hopper-medium-v2 --config.seed=4 --config.mle_alpha=1.5

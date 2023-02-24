@@ -4,8 +4,8 @@ import ml_collections
 def get_config():
     config = ml_collections.ConfigDict()
     config.env_name = "halfcheetah-medium-expert-v2"
-    config.log_dir = "logs"
-    config.algo = "iql"
+    config.log_dir = "logs_expectile0.5"
+    config.algo = "riql"
     config.model_dir = "saved_models"
     config.initializer = "orthogonal"
     config.hidden_dims = (256, 256)
@@ -14,7 +14,7 @@ def get_config():
     config.tau = 0.005
     config.gamma = 0.99
     config.alpha = 5.0
-    config.expectile = 0.7
+    config.expectile = 0.5
     config.temperature = 3.0
     config.batch_size = 256
     config.eval_episodes = 10

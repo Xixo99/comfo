@@ -46,7 +46,7 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
     ckpt_dir = f"{configs.model_dir}/{configs.env_name}/{exp_name}"
     print('#'*len(exp_info) + f'\n{exp_info}\n' + '#'*len(exp_info))
 
-    logger = get_logger(f'logs/{configs.env_name}/{exp_name}.log')
+    logger = get_logger(f'{configs.log_dir}/{configs.env_name}/{exp_name}.log')
     logger.info(f"Exp configurations:\n{configs}")
 
     # initialize the d4rl environment
