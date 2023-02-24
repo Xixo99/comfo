@@ -528,3 +528,16 @@ temperature: 3.0
 	avg_conservative_loss:  0.000, conservative_weight:  1.000
 	avg_smooth_loss:  0.386
 
+2023-02-23 23:32:18 - 
+[#Step 400000] eval_reward: 4.387, eval_time: 5.956, time: 43.529
+	critic_loss: 0.649, max_critic_loss: 22.400, min_critic_loss: 0.001
+	actor_loss: -89.023, max_actor_loss: 17.814, min_actor_loss: -93.742
+	value_loss: 0.036, max_value_loss: 1.737, min_value_loss: 0.000
+	weight: 0.459, max_weight: 0.700, min_weight: 0.300
+	v: 88.350, max_v: 92.919, min_v: -19.670
+	q1: 88.396, max_q1: 93.204, min_q1: -18.206
+	q2: 88.434, max_q2: 93.421, min_q2: -18.843
+	target_q: 88.398, max_target_q: 93.223, min_target_q: -17.185
+	avg_conservative_loss: -0.001, conservative_weight:  1.000
+	avg_smooth_loss:  0.405
+
