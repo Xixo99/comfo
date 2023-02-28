@@ -9,14 +9,14 @@ FLAGS = flags.FLAGS
 
 
 mle_alphas = {
-    "halfcheetah-medium-v2": 0.1,
+    "halfcheetah-medium-v2": 0,
     "halfcheetah-medium-replay-v2": 0,
     "halfcheetah-medium-expert-v2": 1.0,
     "hopper-medium-v2": 1.0,
-    "hopper-medium-replay-v2": 0.25,
+    "hopper-medium-replay-v2": 0,
     "hopper-medium-expert-v2": 1.0,
     "walker2d-medium-v2": 1.0,
-    "walker2d-medium-replay-v2": 0.25,
+    "walker2d-medium-replay-v2": 0,
     "walker2d-medium-expert-v2": 1.5,
 }
 

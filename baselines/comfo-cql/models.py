@@ -320,63 +320,81 @@ class CQLAgent:
             critic_loss2 = 0.5 * (q2 - target_q)**2
             critic_loss = critic_loss1 + critic_loss2
 
-            # CQL loss
-            rng, rng3, rng4 = jax.random.split(rng, 3)
-            cql_random_actions = jax.random.uniform(
-                rng3, shape=(self.num_random, self.act_dim), minval=-self.max_action, maxval=self.max_action)
+            # # CQL loss
+            # rng, rng3, rng4 = jax.random.split(rng, 3)
+            # cql_random_actions = jax.random.uniform(
+            #     rng3, shape=(self.num_random, self.act_dim), minval=-self.max_action, maxval=self.max_action)
 
-            # Repeat observations
-            repeat_observations = jnp.repeat(jnp.expand_dims(observation, axis=0), repeats=self.num_random, axis=0)
-            repeat_next_observations = jnp.repeat(jnp.expand_dims(next_observation, axis=0), repeats=self.num_random, axis=0)
-            _, cql_sampled_actions, cql_logp = self.actor.apply({"params": frozen_actor_params}, rng3, repeat_observations)
-            _, cql_next_actions, cql_logp_next_action = self.actor.apply({"params": frozen_actor_params}, rng4, repeat_next_observations)
+            # # Repeat observations
+            # repeat_observations = jnp.repeat(jnp.expand_dims(observation, axis=0), repeats=self.num_random, axis=0)
+            # repeat_next_observations = jnp.repeat(jnp.expand_dims(next_observation, axis=0), repeats=self.num_random, axis=0)
+            # _, cql_sampled_actions, cql_logp = self.actor.apply({"params": frozen_actor_params}, rng3, repeat_observations)
+            # _, cql_next_actions, cql_logp_next_action = self.actor.apply({"params": frozen_actor_params}, rng4, repeat_next_observations)
 
-            cql_random_q1, cql_random_q2 = self.critic.apply({"params": critic_params}, repeat_observations, cql_random_actions)
-            cql_q1, cql_q2 = self.critic.apply({"params": critic_params}, repeat_observations, cql_sampled_actions)
-            cql_next_q1, cql_next_q2 = self.critic.apply({"params": critic_params}, repeat_next_observations, cql_next_actions)
+            # cql_random_q1, cql_random_q2 = self.critic.apply({"params": critic_params}, repeat_observations, cql_random_actions)
+            # cql_q1, cql_q2 = self.critic.apply({"params": critic_params}, repeat_observations, cql_sampled_actions)
+            # cql_next_q1, cql_next_q2 = self.critic.apply({"params": critic_params}, repeat_next_observations, cql_next_actions)
 
-            # Simulate logsumexp() for continuous actions
-            random_density = jnp.log(0.5**self.act_dim)
-            cql_concat_q1 = jnp.concatenate([cql_random_q1-random_density, cql_next_q1-cql_logp_next_action, cql_q1-cql_logp])
-            cql_concat_q2 = jnp.concatenate([cql_random_q2-random_density, cql_next_q2-cql_logp_next_action, cql_q2-cql_logp])
+            # # Simulate logsumexp() for continuous actions
+            # random_density = jnp.log(0.5**self.act_dim)
+            # cql_concat_q1 = jnp.concatenate([cql_random_q1-random_density, cql_next_q1-cql_logp_next_action, cql_q1-cql_logp])
+            # cql_concat_q2 = jnp.concatenate([cql_random_q2-random_density, cql_next_q2-cql_logp_next_action, cql_q2-cql_logp])
 
-            # CQL0: conservative penalty ==> dominate by the max(cql_concat_q)
-            ood_q1 = jax.scipy.special.logsumexp(cql_concat_q1)
-            ood_q2 = jax.scipy.special.logsumexp(cql_concat_q2)
+            # # CQL0: conservative penalty ==> dominate by the max(cql_concat_q)
+            # ood_q1 = jax.scipy.special.logsumexp(cql_concat_q1)
+            # ood_q2 = jax.scipy.special.logsumexp(cql_concat_q2)
 
-            cql_diff1 = jnp.clip(ood_q1 - q1, self.cql_clip_diff_min, self.cql_clip_diff_max)
-            cql_diff2 = jnp.clip(ood_q2 - q2, self.cql_clip_diff_min, self.cql_clip_diff_max)
-            cql_loss1 = cql_alpha * cql_diff1 * self.min_q_weight
-            cql_loss2 = cql_alpha * cql_diff2 * self.min_q_weight
+            # cql_diff1 = jnp.clip(ood_q1 - q1, self.cql_clip_diff_min, self.cql_clip_diff_max)
+            # cql_diff2 = jnp.clip(ood_q2 - q2, self.cql_clip_diff_min, self.cql_clip_diff_max)
+            # cql_loss1 = cql_alpha * cql_diff1 * self.min_q_weight
+            # cql_loss2 = cql_alpha * cql_diff2 * self.min_q_weight
 
-            comfo_loss = cql_loss1+cql_loss2
+            # note: add conservative loss as extra critic loss
+            avg_conservative_loss = 0
+            key = self.rng
+            for _ in range(self.num_random):
+                key, sub_key = jax.random.split(key, 2)
+                perturbation = jax.random.uniform(
+                    sub_key, jnp.shape(batch.observations), minval=-0.001, maxval=0.001)
+                noise_q11, noise_q12 = self.critic.apply(
+                    {"params": critic_params}, batch.observations+perturbation, batch.actions)
+                noise_q21, noise_q22 = self.critic.apply(
+                    {"params": critic_params}, batch.observations+perturbation*10, batch.actions)
+
+                id_noise_q = jnp.minimum(noise_q11, noise_q12)
+                ood_noise_q = jnp.minimum(noise_q21, noise_q22)
+                conservative_loss = ood_noise_q - id_noise_q
+                avg_conservative_loss += conservative_loss.mean()
+            avg_conservative_loss /= self.num_random
+
+            # comfo_loss = cql_loss1+cql_loss2
 
             # Loss weight form Dopamine
-            total_loss = critic_loss + actor_loss + alpha_loss + comfo_loss
+            total_loss = critic_loss + actor_loss + alpha_loss +avg_conservative_loss
             log_info = {
                 "critic_loss1": critic_loss1,
                 "critic_loss2": critic_loss2,
                 "critic_loss": critic_loss,
                 "actor_loss": actor_loss,
                 "alpha_loss": alpha_loss,
-                "cql_loss1": cql_loss1,
-                "cql_loss2": cql_loss2,
+                # "cql_loss1": cql_loss1,
+                # "cql_loss2": cql_loss2,
                 "q1": q1,
                 "q2": q2,
                 "target_q": target_q,
                 "sampled_q": sampled_q,
-                "ood_q1": ood_q1,
-                "ood_q2": ood_q2,
-                "cql_q1": cql_q1.mean(),
-                "cql_q2": cql_q2.mean(),
-                "random_q1": cql_random_q1.mean(),
-                "random_q2": cql_random_q2.mean(),
+                # "ood_q1": ood_q1,
+                # "ood_q2": ood_q2,
+                # "cql_q1": cql_q1.mean(),
+                # "cql_q2": cql_q2.mean(),
+                # "random_q1": cql_random_q1.mean(),
+                # "random_q2": cql_random_q2.mean(),
                 "alpha": alpha,
                 "logp": logp,
                 "min_q_weight": self.min_q_weight,
                 "logp_next_action": logp_next_action,
-                "cql_diff1": cql_diff1,
-                "cql_diff2": cql_diff2,
+                # "cql_diff1": cql_diff1,
+                # "cql_diff2": cql_diff2,
                 "cql_alpha": cql_alpha
             }
 
@@ -414,18 +432,18 @@ class CQLAgent:
             'critic_loss_min': log_info['critic_loss'].min(),
             'critic_loss_max': log_info['critic_loss'].max(),
             'critic_loss_std': log_info['critic_loss'].std(),
-            'critic_loss1_min': log_info['critic_loss1'].min(),
-            'critic_loss1_max': log_info['critic_loss1'].max(),
-            'critic_loss1_std': log_info['critic_loss1'].std(),
-            'critic_loss2_min': log_info['critic_loss2'].min(),
-            'critic_loss2_max': log_info['critic_loss2'].max(),
-            'critic_loss2_std': log_info['critic_loss2'].std(),
-            'cql_loss1_min': log_info['cql_loss1'].min(),
-            'cql_loss1_max': log_info['cql_loss1'].max(),
-            'cql_loss1_std': log_info['cql_loss1'].std(),
-            'cql_loss2_min': log_info['cql_loss2'].min(),
-            'cql_loss2_max': log_info['cql_loss2'].max(),
-            'cql_loss2_std': log_info['cql_loss2'].std(),
+            # 'critic_loss1_min': log_info['critic_loss1'].min(),
+            # 'critic_loss1_max': log_info['critic_loss1'].max(),
+            # 'critic_loss1_std': log_info['critic_loss1'].std(),
+            # 'critic_loss2_min': log_info['critic_loss2'].min(),
+            # 'critic_loss2_max': log_info['critic_loss2'].max(),
+            # 'critic_loss2_std': log_info['critic_loss2'].std(),
+            # 'cql_loss1_min': log_info['cql_loss1'].min(),
+            # 'cql_loss1_max': log_info['cql_loss1'].max(),
+            # 'cql_loss1_std': log_info['cql_loss1'].std(),
+            # 'cql_loss2_min': log_info['cql_loss2'].min(),
+            # 'cql_loss2_max': log_info['cql_loss2'].max(),
+            # 'cql_loss2_std': log_info['cql_loss2'].std(),
         }
         log_info = jax.tree_map(functools.partial(jnp.mean, axis=0), log_info)
         log_info.update(extra_log_info)

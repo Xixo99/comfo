@@ -5,7 +5,7 @@ import numpy as np
 def get_config():
     config = ml_collections.ConfigDict()
     config.env_name = "halfcheetah-medium-expert-v2"
-    config.log_dir = "logs"
+    config.log_dir = "cql-"
     config.model_dir = "saved_models"
     config.initializer = "glorut_uniform"
     config.hidden_dims = (256, 256, 256)

@@ -466,9 +466,6 @@ class COMFO3Agent:
                                                                 self.value_state,
                                                                 self.critic_state,
                                                                 self.critic_target_params)
-        if log_info['avg_conservative_loss'] < -10.0:
-            # print("**avg_conservative_loss")
-            self.conservative_weight /= 2
         return log_info
 
     def save(self, fname: str, cnt: int):

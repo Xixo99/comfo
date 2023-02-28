@@ -9,7 +9,7 @@ FLAGS = flags.FLAGS
 
 
 mle_alphas = {
-    "halfcheetah-medium-v2": 0.1,
+    "halfcheetah-medium-v2": 1.0,
     "halfcheetah-medium-replay-v2": 0.25,
     "halfcheetah-medium-expert-v2": 1.0,
     "hopper-medium-v2": 1.0,

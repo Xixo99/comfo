@@ -4,7 +4,7 @@ import ml_collections
 def get_config():
     config = ml_collections.ConfigDict()
     config.env_name = "halfcheetah-medium-expert-v2"
-    info = "20230225_noise0.01"
+    info = "20230226_rerun"
     config.log_dir = f"{info}"
     config.algo = "COMFO6"
     config.model_dir = "saved_models"
