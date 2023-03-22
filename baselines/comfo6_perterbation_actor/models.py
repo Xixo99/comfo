@@ -240,7 +240,7 @@ class COMFO6Agent:
                  expectile: float,
                  temperature: float,
                  max_timesteps: int,
-                 mle_alpha: float = 1.0,
+                 mle_alpha: float,
                  initializer: str = "orthogonal"):
 
         self.act_dim = act_dim

@@ -177,7 +177,7 @@ class Scalar(nn.Module):
 #############
 # New Actor #
 #############
-class COMFO3_Actor(nn.Module):
+class COMFO8_Actor(nn.Module):
     act_dim: int
     max_action: float = 1.0
     hidden_dims: Sequence[int] = (256, 256)
@@ -224,8 +224,8 @@ class COMFO3_Actor(nn.Module):
         return mean_action*self.max_action, sampled_action*self.max_action, logp
 
 
-# COMFO3 Actor with entropy
-class COMFO3Agent:
+# COMFO8 Actor with entropy
+class COMFO8Agent:
     def __init__(self,
                  obs_dim: int,
                  act_dim: int,
@@ -261,7 +261,7 @@ class COMFO3Agent:
         dummy_obs = jnp.ones([1, obs_dim], dtype=jnp.float32)
         dummy_act = jnp.ones([1, act_dim], dtype=jnp.float32)
 
-        self.actor = COMFO3_Actor(act_dim=act_dim,
+        self.actor = COMFO8_Actor(act_dim=act_dim,
                                   max_action=max_action,
                                   hidden_dims=hidden_dims,
                                   initializer=initializer)
@@ -347,8 +347,10 @@ class COMFO3Agent:
             alpha_loss_mean = 0.0
             for _ in range(self.num_random):
                 key, sub_key = jax.random.split(key, 2)
-                perturbation = jax.random.uniform(
-                    sub_key, jnp.shape(batch.observations), minval=-self.noise_scale, maxval=self.noise_scale)
+                # perturbation = jax.random.uniform(
+                #     sub_key, jnp.shape(batch.observations), minval=-self.noise_scale, maxval=self.noise_scale)
+                perturbation = self.noise_scale * jax.random.normal(
+                    sub_key, jnp.shape(batch.observations))
 
                 _, sampled_actions, logp = self.actor.apply(
                     {"params": params}, rng, batch.observations+perturbation)
@@ -367,6 +369,7 @@ class COMFO3Agent:
                 q1, q2 = self.critic.apply({"params": critic_params},
                                         batch.observations+perturbation, sampled_actions)
                 q = jnp.minimum(q1, q2)
+                # actor_loss = -q - self.mle_alpha*mle_prob
                 sac_loss = -q+alpha*logp
                 actor_loss = sac_loss - self.mle_alpha*mle_prob
 
@@ -411,24 +414,26 @@ class COMFO3Agent:
             avg_conservative_loss = 0
             key = self.rng
             for _ in range(self.num_random):
-                key, sub_key = jax.random.split(key, 2)
-                perturbation = jax.random.uniform(
-                    sub_key, jnp.shape(batch.observations), minval=-self.noise_scale, maxval=self.noise_scale)
+                key, obs_key, act_key = jax.random.split(key, 3)
+                perturbation_s = self.noise_scale * jax.random.normal(
+                    obs_key, jnp.shape(batch.observations))
+                perturbation_a = self.noise_scale * jax.random.normal(
+                    act_key, jnp.shape(batch.actions))
                 noise_q11, noise_q12 = self.critic.apply(
-                    {"params": params}, batch.observations+perturbation, batch.actions)
+                    {"params": params}, batch.observations+perturbation_s, batch.actions)
                 noise_q21, noise_q22 = self.critic.apply(
-                    {"params": params}, batch.observations+perturbation*10, batch.actions)
+                    {"params": params}, batch.observations+perturbation_s*10, batch.actions)
+                # noise_q11, noise_q12 = self.critic.apply(
+                #     {"params": params}, batch.observations+perturbation_s, batch.actions+perturbation_a)
+                # noise_q21, noise_q22 = self.critic.apply(
+                #     {"params": params}, batch.observations+perturbation_s*10, batch.actions+perturbation_a*10)
 
                 id_noise_q = jnp.minimum(noise_q11, noise_q12)
                 ood_noise_q = jnp.minimum(noise_q21, noise_q22)
                 conservative_loss = ood_noise_q - id_noise_q
                 avg_conservative_loss += conservative_loss.mean()
             avg_conservative_loss /= self.num_random
-            # print("****************")
-            # print(avg_conservative_loss)
-            # print("****************")
-            # if avg_conservative_loss < -10.0:
-            #     self.conservative_weight /= 2
+
 
             return avg_critic_loss+self.conservative_weight*avg_conservative_loss, {
                 "critic_loss": avg_critic_loss,
@@ -444,8 +449,7 @@ class COMFO3Agent:
         (_, critic_info), critic_grads = jax.value_and_grad(
             loss_fn, has_aux=True)(critic_state.params)
         critic_state = critic_state.apply_gradients(grads=critic_grads)
-        # if avg_conservative_loss < 10.0:
-        #     self.conservative_weight /= 2
+
         return critic_info, critic_state
 
     @functools.partial(jax.jit, static_argnames=("self"))

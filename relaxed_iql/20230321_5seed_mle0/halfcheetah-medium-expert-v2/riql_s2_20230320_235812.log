@@ -1,0 +1,1265 @@
+2023-03-20 23:58:12 - Exp configurations:
+algo: riql
+alpha: 5.0
+batch_size: 256
+env_name: halfcheetah-medium-expert-v2
+eval_episodes: 10
+eval_freq: 5000
+expectile: 0.7
+gamma: 0.99
+hidden_dims: !!python/tuple
+- 256
+- 256
+initializer: orthogonal
+log_dir: 20230321_5seed_mle0
+lr: 0.0003
+max_timesteps: 1000000
+mle_alpha: 0.0
+model_dir: saved_models
+num_random: 10
+seed: 2
+tau: 0.005
+temperature: 3.0
+
+2023-03-20 23:59:39 - 
+[#Step 10000] eval_reward: -0.966, eval_time: 5.409, time: 1.464
+	critic_loss: 0.357, max_critic_loss: 7.085, min_critic_loss: 0.001
+	actor_loss: -27.616, max_actor_loss: -2.653, min_actor_loss: -42.323
+	value_loss: 0.051, max_value_loss: 0.974, min_value_loss: 0.000
+	weight: 0.452, max_weight: 0.700, min_weight: 0.300
+	v: 26.776, max_v: 42.224, min_v: 2.181
+	q1: 27.129, max_q1: 42.354, min_q1: 1.574
+	q2: 27.114, max_q2: 42.287, min_q2: 0.943
+	target_q: 27.145, max_target_q: 42.475, min_target_q: 1.445
+
+2023-03-21 00:00:04 - 
+[#Step 20000] eval_reward: -2.819, eval_time: 5.363, time: 1.867
+	critic_loss: 1.002, max_critic_loss: 39.468, min_critic_loss: 0.000
+	actor_loss: -49.503, max_actor_loss: -4.065, min_actor_loss: -71.387
+	value_loss: 0.085, max_value_loss: 1.027, min_value_loss: 0.000
+	weight: 0.473, max_weight: 0.700, min_weight: 0.300
+	v: 48.230, max_v: 71.378, min_v: 4.007
+	q1: 48.554, max_q1: 70.921, min_q1: 3.533
+	q2: 48.537, max_q2: 70.983, min_q2: 3.541
+	target_q: 48.523, max_target_q: 71.209, min_target_q: 5.188
+
+2023-03-21 00:00:28 - 
+[#Step 30000] eval_reward: -2.361, eval_time: 5.441, time: 2.279
+	critic_loss: 0.886, max_critic_loss: 20.457, min_critic_loss: 0.000
+	actor_loss: -58.813, max_actor_loss: -28.616, min_actor_loss: -89.311
+	value_loss: 0.134, max_value_loss: 4.344, min_value_loss: 0.000
+	weight: 0.425, max_weight: 0.700, min_weight: 0.300
+	v: 57.484, max_v: 88.697, min_v: 27.747
+	q1: 57.485, max_q1: 89.381, min_q1: 28.083
+	q2: 57.463, max_q2: 89.177, min_q2: 27.261
+	target_q: 57.414, max_target_q: 88.854, min_target_q: 28.703
+
+2023-03-21 00:00:53 - 
+[#Step 40000] eval_reward: -2.604, eval_time: 5.414, time: 2.693
+	critic_loss: 1.576, max_critic_loss: 51.595, min_critic_loss: 0.001
+	actor_loss: -64.966, max_actor_loss: -4.701, min_actor_loss: -100.034
+	value_loss: 0.112, max_value_loss: 2.674, min_value_loss: 0.000
+	weight: 0.498, max_weight: 0.700, min_weight: 0.300
+	v: 63.400, max_v: 99.018, min_v: 4.648
+	q1: 63.450, max_q1: 98.736, min_q1: 4.863
+	q2: 63.443, max_q2: 98.464, min_q2: 4.118
+	target_q: 63.547, max_target_q: 98.981, min_target_q: 6.183
+
+2023-03-21 00:01:18 - 
+[#Step 50000] eval_reward: -4.383, eval_time: 5.374, time: 3.105
+	critic_loss: 1.650, max_critic_loss: 38.863, min_critic_loss: 0.000
+	actor_loss: -71.029, max_actor_loss: -5.137, min_actor_loss: -108.067
+	value_loss: 0.164, max_value_loss: 7.787, min_value_loss: 0.000
+	weight: 0.459, max_weight: 0.700, min_weight: 0.300
+	v: 69.270, max_v: 108.108, min_v: 3.997
+	q1: 69.279, max_q1: 107.978, min_q1: 4.362
+	q2: 69.307, max_q2: 108.291, min_q2: 4.172
+	target_q: 69.356, max_target_q: 107.991, min_target_q: 3.184
+
+2023-03-21 00:01:42 - 
+[#Step 60000] eval_reward: -1.675, eval_time: 5.321, time: 3.515
+	critic_loss: 1.683, max_critic_loss: 54.235, min_critic_loss: 0.001
+	actor_loss: -76.665, max_actor_loss: -6.623, min_actor_loss: -110.356
+	value_loss: 0.135, max_value_loss: 4.164, min_value_loss: 0.000
+	weight: 0.441, max_weight: 0.700, min_weight: 0.300
+	v: 74.964, max_v: 110.234, min_v: 4.868
+	q1: 74.770, max_q1: 110.962, min_q1: 5.572
+	q2: 74.768, max_q2: 111.183, min_q2: 6.008
+	target_q: 75.087, max_target_q: 110.588, min_target_q: 4.506
+
+2023-03-21 00:02:07 - 
+[#Step 70000] eval_reward: -1.770, eval_time: 5.519, time: 3.925
+	critic_loss: 1.123, max_critic_loss: 18.727, min_critic_loss: 0.001
+	actor_loss: -75.634, max_actor_loss: -11.819, min_actor_loss: -113.651
+	value_loss: 0.133, max_value_loss: 2.240, min_value_loss: 0.000
+	weight: 0.472, max_weight: 0.700, min_weight: 0.300
+	v: 73.375, max_v: 113.640, min_v: 13.721
+	q1: 73.246, max_q1: 113.644, min_q1: 10.921
+	q2: 73.237, max_q2: 113.837, min_q2: 12.670
+	target_q: 73.394, max_target_q: 113.256, min_target_q: 12.870
+
+2023-03-21 00:02:32 - 
+[#Step 80000] eval_reward: -1.199, eval_time: 5.564, time: 4.338
+	critic_loss: 1.175, max_critic_loss: 15.408, min_critic_loss: 0.000
+	actor_loss: -77.129, max_actor_loss: -7.299, min_actor_loss: -114.887
+	value_loss: 0.132, max_value_loss: 2.015, min_value_loss: 0.000
+	weight: 0.483, max_weight: 0.700, min_weight: 0.300
+	v: 74.876, max_v: 116.287, min_v: 4.663
+	q1: 74.906, max_q1: 115.585, min_q1: 5.422
+	q2: 74.953, max_q2: 115.473, min_q2: 5.621
+	target_q: 74.943, max_target_q: 115.088, min_target_q: 3.809
+
+2023-03-21 00:02:56 - 
+[#Step 90000] eval_reward: -1.575, eval_time: 5.581, time: 4.749
+	critic_loss: 1.489, max_critic_loss: 56.946, min_critic_loss: 0.000
+	actor_loss: -78.169, max_actor_loss: -5.739, min_actor_loss: -116.504
+	value_loss: 0.262, max_value_loss: 31.200, min_value_loss: 0.000
+	weight: 0.489, max_weight: 0.700, min_weight: 0.300
+	v: 75.671, max_v: 116.391, min_v: 6.296
+	q1: 75.743, max_q1: 116.405, min_q1: 4.798
+	q2: 75.692, max_q2: 116.329, min_q2: 5.196
+	target_q: 75.529, max_target_q: 116.530, min_target_q: 7.090
+
+2023-03-21 00:03:16 - Saving checkpoint at step: 20
+2023-03-21 00:03:16 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_20
+2023-03-21 00:03:16 - Saving checkpoint at step: 20
+2023-03-21 00:03:16 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_20
+2023-03-21 00:03:16 - Saving checkpoint at step: 20
+2023-03-21 00:03:16 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_20
+2023-03-21 00:03:21 - 
+[#Step 100000] eval_reward: -2.784, eval_time: 5.546, time: 5.165
+	critic_loss: 1.301, max_critic_loss: 23.472, min_critic_loss: 0.000
+	actor_loss: -81.989, max_actor_loss: -5.304, min_actor_loss: -114.470
+	value_loss: 0.314, max_value_loss: 25.729, min_value_loss: 0.000
+	weight: 0.431, max_weight: 0.700, min_weight: 0.300
+	v: 79.672, max_v: 114.066, min_v: 5.863
+	q1: 79.444, max_q1: 114.136, min_q1: 4.906
+	q2: 79.507, max_q2: 114.268, min_q2: 4.647
+	target_q: 79.612, max_target_q: 113.919, min_target_q: 5.864
+
+2023-03-21 00:03:46 - 
+[#Step 110000] eval_reward: -6.164, eval_time: 5.362, time: 5.574
+	critic_loss: 1.377, max_critic_loss: 18.517, min_critic_loss: 0.001
+	actor_loss: -78.121, max_actor_loss: -39.719, min_actor_loss: -114.973
+	value_loss: 0.158, max_value_loss: 2.363, min_value_loss: 0.000
+	weight: 0.419, max_weight: 0.700, min_weight: 0.300
+	v: 75.587, max_v: 115.022, min_v: 38.710
+	q1: 75.422, max_q1: 115.351, min_q1: 39.621
+	q2: 75.405, max_q2: 115.180, min_q2: 38.613
+	target_q: 75.548, max_target_q: 115.163, min_target_q: 38.724
+
+2023-03-21 00:04:10 - 
+[#Step 120000] eval_reward: -4.143, eval_time: 5.443, time: 5.981
+	critic_loss: 1.777, max_critic_loss: 58.668, min_critic_loss: 0.002
+	actor_loss: -80.880, max_actor_loss: -6.291, min_actor_loss: -113.417
+	value_loss: 0.119, max_value_loss: 2.917, min_value_loss: 0.000
+	weight: 0.406, max_weight: 0.700, min_weight: 0.300
+	v: 78.429, max_v: 113.751, min_v: 4.020
+	q1: 78.058, max_q1: 113.797, min_q1: 4.790
+	q2: 77.973, max_q2: 113.440, min_q2: 4.111
+	target_q: 78.464, max_target_q: 113.398, min_target_q: 5.128
+
+2023-03-21 00:04:35 - 
+[#Step 130000] eval_reward: -5.106, eval_time: 5.606, time: 6.397
+	critic_loss: 1.121, max_critic_loss: 15.080, min_critic_loss: 0.000
+	actor_loss: -80.793, max_actor_loss: -39.082, min_actor_loss: -115.066
+	value_loss: 0.168, max_value_loss: 6.654, min_value_loss: 0.000
+	weight: 0.442, max_weight: 0.700, min_weight: 0.300
+	v: 78.203, max_v: 114.623, min_v: 38.501
+	q1: 77.957, max_q1: 114.610, min_q1: 38.372
+	q2: 77.975, max_q2: 114.690, min_q2: 38.011
+	target_q: 78.078, max_target_q: 114.849, min_target_q: 40.044
+
+2023-03-21 00:05:00 - 
+[#Step 140000] eval_reward: -3.129, eval_time: 5.381, time: 6.805
+	critic_loss: 1.653, max_critic_loss: 104.846, min_critic_loss: 0.005
+	actor_loss: -80.335, max_actor_loss: -7.705, min_actor_loss: -113.330
+	value_loss: 0.200, max_value_loss: 2.594, min_value_loss: 0.000
+	weight: 0.391, max_weight: 0.700, min_weight: 0.300
+	v: 76.739, max_v: 113.595, min_v: 7.815
+	q1: 76.654, max_q1: 113.539, min_q1: 7.615
+	q2: 76.643, max_q2: 114.260, min_q2: 7.453
+	target_q: 76.564, max_target_q: 113.537, min_target_q: 7.126
+
+2023-03-21 00:05:24 - 
+[#Step 150000] eval_reward: -0.212, eval_time: 5.612, time: 7.215
+	critic_loss: 1.402, max_critic_loss: 31.005, min_critic_loss: 0.000
+	actor_loss: -81.754, max_actor_loss: -6.181, min_actor_loss: -112.437
+	value_loss: 0.196, max_value_loss: 9.720, min_value_loss: 0.000
+	weight: 0.436, max_weight: 0.700, min_weight: 0.300
+	v: 78.654, max_v: 112.909, min_v: 5.940
+	q1: 78.487, max_q1: 112.583, min_q1: 5.185
+	q2: 78.503, max_q2: 112.657, min_q2: 5.683
+	target_q: 78.508, max_target_q: 112.594, min_target_q: 5.979
+
+2023-03-21 00:05:49 - 
+[#Step 160000] eval_reward: -2.172, eval_time: 5.352, time: 7.623
+	critic_loss: 1.017, max_critic_loss: 14.828, min_critic_loss: 0.001
+	actor_loss: -81.778, max_actor_loss: -27.040, min_actor_loss: -112.617
+	value_loss: 0.187, max_value_loss: 11.653, min_value_loss: 0.000
+	weight: 0.461, max_weight: 0.700, min_weight: 0.300
+	v: 77.615, max_v: 112.583, min_v: 22.813
+	q1: 77.530, max_q1: 112.641, min_q1: 24.603
+	q2: 77.567, max_q2: 112.820, min_q2: 24.481
+	target_q: 77.561, max_target_q: 111.780, min_target_q: 23.168
+
+2023-03-21 00:06:14 - 
+[#Step 170000] eval_reward: -0.545, eval_time: 5.432, time: 8.035
+	critic_loss: 1.268, max_critic_loss: 19.276, min_critic_loss: 0.000
+	actor_loss: -80.429, max_actor_loss: -35.083, min_actor_loss: -111.996
+	value_loss: 0.232, max_value_loss: 17.107, min_value_loss: 0.000
+	weight: 0.391, max_weight: 0.700, min_weight: 0.300
+	v: 76.473, max_v: 112.216, min_v: 34.970
+	q1: 76.257, max_q1: 112.391, min_q1: 34.643
+	q2: 76.265, max_q2: 112.269, min_q2: 37.022
+	target_q: 76.524, max_target_q: 112.473, min_target_q: 34.652
+
+2023-03-21 00:06:38 - 
+[#Step 180000] eval_reward: -0.196, eval_time: 5.474, time: 8.445
+	critic_loss: 2.937, max_critic_loss: 118.692, min_critic_loss: 0.000
+	actor_loss: -82.312, max_actor_loss: -22.327, min_actor_loss: -112.081
+	value_loss: 0.206, max_value_loss: 8.606, min_value_loss: 0.000
+	weight: 0.477, max_weight: 0.700, min_weight: 0.300
+	v: 78.422, max_v: 112.321, min_v: 15.954
+	q1: 78.238, max_q1: 112.339, min_q1: 19.675
+	q2: 78.320, max_q2: 112.547, min_q2: 21.297
+	target_q: 78.640, max_target_q: 111.652, min_target_q: 16.363
+
+2023-03-21 00:07:03 - 
+[#Step 190000] eval_reward: 0.909, eval_time: 5.396, time: 8.856
+	critic_loss: 1.107, max_critic_loss: 18.727, min_critic_loss: 0.000
+	actor_loss: -82.411, max_actor_loss: -38.012, min_actor_loss: -112.719
+	value_loss: 0.179, max_value_loss: 3.052, min_value_loss: 0.000
+	weight: 0.411, max_weight: 0.700, min_weight: 0.300
+	v: 78.921, max_v: 113.048, min_v: 38.653
+	q1: 78.682, max_q1: 113.467, min_q1: 37.241
+	q2: 78.661, max_q2: 113.428, min_q2: 38.666
+	target_q: 78.829, max_target_q: 112.178, min_target_q: 38.002
+
+2023-03-21 00:07:22 - Saving checkpoint at step: 40
+2023-03-21 00:07:22 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_40
+2023-03-21 00:07:22 - Saving checkpoint at step: 40
+2023-03-21 00:07:22 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_40
+2023-03-21 00:07:22 - Saving checkpoint at step: 40
+2023-03-21 00:07:22 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_40
+2023-03-21 00:07:28 - 
+[#Step 200000] eval_reward: 1.376, eval_time: 5.364, time: 9.268
+	critic_loss: 1.487, max_critic_loss: 28.056, min_critic_loss: 0.003
+	actor_loss: -80.911, max_actor_loss: -6.267, min_actor_loss: -113.343
+	value_loss: 0.119, max_value_loss: 2.284, min_value_loss: 0.000
+	weight: 0.458, max_weight: 0.700, min_weight: 0.300
+	v: 76.531, max_v: 113.183, min_v: 4.443
+	q1: 76.836, max_q1: 113.424, min_q1: 6.103
+	q2: 76.805, max_q2: 113.565, min_q2: 5.356
+	target_q: 76.348, max_target_q: 112.779, min_target_q: 3.848
+
+2023-03-21 00:07:52 - 
+[#Step 210000] eval_reward: 1.148, eval_time: 5.334, time: 9.676
+	critic_loss: 1.025, max_critic_loss: 23.778, min_critic_loss: 0.001
+	actor_loss: -77.956, max_actor_loss: -21.358, min_actor_loss: -112.034
+	value_loss: 0.435, max_value_loss: 29.212, min_value_loss: 0.000
+	weight: 0.464, max_weight: 0.700, min_weight: 0.300
+	v: 74.141, max_v: 111.569, min_v: 22.967
+	q1: 74.171, max_q1: 111.444, min_q1: 21.425
+	q2: 74.175, max_q2: 111.376, min_q2: 21.752
+	target_q: 74.246, max_target_q: 111.347, min_target_q: 22.345
+
+2023-03-21 00:08:17 - 
+[#Step 220000] eval_reward: 2.221, eval_time: 5.396, time: 10.085
+	critic_loss: 1.354, max_critic_loss: 45.623, min_critic_loss: 0.002
+	actor_loss: -81.433, max_actor_loss: -42.958, min_actor_loss: -113.326
+	value_loss: 0.479, max_value_loss: 74.447, min_value_loss: 0.000
+	weight: 0.400, max_weight: 0.700, min_weight: 0.300
+	v: 77.765, max_v: 113.306, min_v: 43.526
+	q1: 77.390, max_q1: 113.177, min_q1: 42.219
+	q2: 77.382, max_q2: 113.194, min_q2: 42.164
+	target_q: 77.763, max_target_q: 113.322, min_target_q: 43.101
+
+2023-03-21 00:08:41 - 
+[#Step 230000] eval_reward: 0.091, eval_time: 5.449, time: 10.489
+	critic_loss: 1.555, max_critic_loss: 77.129, min_critic_loss: 0.002
+	actor_loss: -81.652, max_actor_loss: -34.538, min_actor_loss: -112.002
+	value_loss: 0.547, max_value_loss: 84.736, min_value_loss: 0.000
+	weight: 0.391, max_weight: 0.700, min_weight: 0.300
+	v: 77.760, max_v: 112.039, min_v: 35.940
+	q1: 77.605, max_q1: 111.948, min_q1: 35.875
+	q2: 77.579, max_q2: 111.760, min_q2: 34.696
+	target_q: 77.634, max_target_q: 112.109, min_target_q: 37.282
+
+2023-03-21 00:09:05 - 
+[#Step 240000] eval_reward: 0.950, eval_time: 5.394, time: 10.894
+	critic_loss: 1.703, max_critic_loss: 20.667, min_critic_loss: 0.001
+	actor_loss: -82.279, max_actor_loss: -6.199, min_actor_loss: -110.166
+	value_loss: 0.291, max_value_loss: 25.866, min_value_loss: 0.000
+	weight: 0.467, max_weight: 0.700, min_weight: 0.300
+	v: 77.415, max_v: 110.353, min_v: 6.978
+	q1: 77.436, max_q1: 110.495, min_q1: 5.714
+	q2: 77.432, max_q2: 110.388, min_q2: 5.914
+	target_q: 77.112, max_target_q: 109.630, min_target_q: 6.766
+
+2023-03-21 00:09:29 - 
+[#Step 250000] eval_reward: 1.667, eval_time: 5.433, time: 11.298
+	critic_loss: 0.860, max_critic_loss: 9.691, min_critic_loss: 0.000
+	actor_loss: -79.904, max_actor_loss: -42.423, min_actor_loss: -110.757
+	value_loss: 0.253, max_value_loss: 21.627, min_value_loss: 0.000
+	weight: 0.466, max_weight: 0.700, min_weight: 0.300
+	v: 74.930, max_v: 110.607, min_v: 42.708
+	q1: 75.005, max_q1: 110.758, min_q1: 43.441
+	q2: 75.040, max_q2: 110.742, min_q2: 44.364
+	target_q: 74.862, max_target_q: 110.750, min_target_q: 43.195
+
+2023-03-21 00:09:54 - 
+[#Step 260000] eval_reward: 2.137, eval_time: 5.431, time: 11.706
+	critic_loss: 1.490, max_critic_loss: 41.846, min_critic_loss: 0.000
+	actor_loss: -83.264, max_actor_loss: -38.494, min_actor_loss: -110.917
+	value_loss: 0.223, max_value_loss: 5.379, min_value_loss: 0.000
+	weight: 0.494, max_weight: 0.700, min_weight: 0.300
+	v: 79.470, max_v: 110.350, min_v: 36.590
+	q1: 79.304, max_q1: 110.996, min_q1: 33.748
+	q2: 79.417, max_q2: 111.126, min_q2: 36.844
+	target_q: 79.576, max_target_q: 110.909, min_target_q: 34.498
+
+2023-03-21 00:10:18 - 
+[#Step 270000] eval_reward: 0.965, eval_time: 5.457, time: 12.116
+	critic_loss: 1.476, max_critic_loss: 34.560, min_critic_loss: 0.000
+	actor_loss: -80.517, max_actor_loss: -43.936, min_actor_loss: -111.179
+	value_loss: 0.210, max_value_loss: 14.513, min_value_loss: 0.000
+	weight: 0.453, max_weight: 0.700, min_weight: 0.300
+	v: 75.683, max_v: 111.010, min_v: 44.586
+	q1: 75.587, max_q1: 111.286, min_q1: 44.778
+	q2: 75.640, max_q2: 111.336, min_q2: 43.982
+	target_q: 75.695, max_target_q: 110.933, min_target_q: 44.400
+
+2023-03-21 00:10:43 - 
+[#Step 280000] eval_reward: 0.404, eval_time: 5.391, time: 12.524
+	critic_loss: 1.461, max_critic_loss: 23.001, min_critic_loss: 0.000
+	actor_loss: -78.557, max_actor_loss: -5.960, min_actor_loss: -110.651
+	value_loss: 0.388, max_value_loss: 34.733, min_value_loss: 0.000
+	weight: 0.398, max_weight: 0.700, min_weight: 0.300
+	v: 74.299, max_v: 111.691, min_v: 6.537
+	q1: 73.869, max_q1: 110.987, min_q1: 6.809
+	q2: 73.914, max_q2: 110.994, min_q2: 6.055
+	target_q: 74.353, max_target_q: 111.503, min_target_q: 7.210
+
+2023-03-21 00:11:07 - 
+[#Step 290000] eval_reward: 0.036, eval_time: 5.313, time: 12.927
+	critic_loss: 2.266, max_critic_loss: 167.391, min_critic_loss: 0.005
+	actor_loss: -81.351, max_actor_loss: -9.257, min_actor_loss: -110.546
+	value_loss: 0.468, max_value_loss: 74.831, min_value_loss: 0.000
+	weight: 0.344, max_weight: 0.700, min_weight: 0.300
+	v: 77.732, max_v: 111.579, min_v: 10.220
+	q1: 77.095, max_q1: 110.831, min_q1: 9.938
+	q2: 77.079, max_q2: 110.937, min_q2: 8.664
+	target_q: 77.659, max_target_q: 112.189, min_target_q: 8.778
+
+2023-03-21 00:11:26 - Saving checkpoint at step: 60
+2023-03-21 00:11:26 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_60
+2023-03-21 00:11:26 - Saving checkpoint at step: 60
+2023-03-21 00:11:26 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_60
+2023-03-21 00:11:26 - Saving checkpoint at step: 60
+2023-03-21 00:11:26 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_60
+2023-03-21 00:11:32 - 
+[#Step 300000] eval_reward: 1.077, eval_time: 5.405, time: 13.335
+	critic_loss: 1.585, max_critic_loss: 74.031, min_critic_loss: 0.000
+	actor_loss: -83.283, max_actor_loss: -5.572, min_actor_loss: -110.287
+	value_loss: 0.281, max_value_loss: 23.872, min_value_loss: 0.000
+	weight: 0.397, max_weight: 0.700, min_weight: 0.300
+	v: 79.807, max_v: 110.925, min_v: 6.047
+	q1: 79.524, max_q1: 110.701, min_q1: 5.943
+	q2: 79.574, max_q2: 110.809, min_q2: 5.968
+	target_q: 79.818, max_target_q: 110.563, min_target_q: 5.761
+
+2023-03-21 00:11:56 - 
+[#Step 310000] eval_reward: -0.664, eval_time: 5.398, time: 13.744
+	critic_loss: 2.410, max_critic_loss: 242.106, min_critic_loss: 0.000
+	actor_loss: -78.890, max_actor_loss: -24.996, min_actor_loss: -110.123
+	value_loss: 0.403, max_value_loss: 25.328, min_value_loss: 0.000
+	weight: 0.398, max_weight: 0.700, min_weight: 0.300
+	v: 73.853, max_v: 111.099, min_v: 27.582
+	q1: 73.764, max_q1: 110.481, min_q1: 25.680
+	q2: 73.724, max_q2: 110.392, min_q2: 26.067
+	target_q: 73.637, max_target_q: 110.950, min_target_q: 28.790
+
+2023-03-21 00:12:21 - 
+[#Step 320000] eval_reward: 1.891, eval_time: 5.444, time: 14.156
+	critic_loss: 1.212, max_critic_loss: 31.741, min_critic_loss: 0.001
+	actor_loss: -83.141, max_actor_loss: -23.693, min_actor_loss: -110.785
+	value_loss: 0.168, max_value_loss: 5.046, min_value_loss: 0.000
+	weight: 0.391, max_weight: 0.700, min_weight: 0.300
+	v: 78.817, max_v: 111.502, min_v: 22.220
+	q1: 78.610, max_q1: 110.574, min_q1: 22.262
+	q2: 78.631, max_q2: 110.654, min_q2: 25.019
+	target_q: 78.608, max_target_q: 110.209, min_target_q: 24.422
+
+2023-03-21 00:12:46 - 
+[#Step 330000] eval_reward: 0.012, eval_time: 5.405, time: 14.578
+	critic_loss: 0.851, max_critic_loss: 23.197, min_critic_loss: 0.001
+	actor_loss: -81.800, max_actor_loss: -6.213, min_actor_loss: -109.668
+	value_loss: 0.150, max_value_loss: 3.597, min_value_loss: 0.000
+	weight: 0.416, max_weight: 0.700, min_weight: 0.300
+	v: 76.701, max_v: 109.548, min_v: 7.093
+	q1: 76.560, max_q1: 109.683, min_q1: 5.248
+	q2: 76.528, max_q2: 109.510, min_q2: 5.470
+	target_q: 76.509, max_target_q: 109.608, min_target_q: 7.544
+
+2023-03-21 00:13:11 - 
+[#Step 340000] eval_reward: -1.141, eval_time: 5.317, time: 14.985
+	critic_loss: 0.702, max_critic_loss: 12.741, min_critic_loss: 0.004
+	actor_loss: -81.619, max_actor_loss: -8.411, min_actor_loss: -109.449
+	value_loss: 0.157, max_value_loss: 2.167, min_value_loss: 0.000
+	weight: 0.425, max_weight: 0.700, min_weight: 0.300
+	v: 77.609, max_v: 109.677, min_v: 7.177
+	q1: 77.404, max_q1: 109.145, min_q1: 8.487
+	q2: 77.416, max_q2: 109.203, min_q2: 8.096
+	target_q: 77.483, max_target_q: 109.448, min_target_q: 7.347
+
+2023-03-21 00:13:35 - 
+[#Step 350000] eval_reward: 0.307, eval_time: 5.424, time: 15.389
+	critic_loss: 1.110, max_critic_loss: 35.734, min_critic_loss: 0.000
+	actor_loss: -81.153, max_actor_loss: -7.815, min_actor_loss: -109.899
+	value_loss: 0.179, max_value_loss: 10.736, min_value_loss: 0.000
+	weight: 0.480, max_weight: 0.700, min_weight: 0.300
+	v: 76.099, max_v: 110.699, min_v: 8.204
+	q1: 75.975, max_q1: 110.615, min_q1: 7.570
+	q2: 75.934, max_q2: 110.304, min_q2: 8.185
+	target_q: 76.090, max_target_q: 110.689, min_target_q: 8.227
+
+2023-03-21 00:14:00 - 
+[#Step 360000] eval_reward: -0.559, eval_time: 5.534, time: 15.803
+	critic_loss: 1.168, max_critic_loss: 41.791, min_critic_loss: 0.001
+	actor_loss: -83.646, max_actor_loss: -7.939, min_actor_loss: -109.043
+	value_loss: 0.307, max_value_loss: 19.660, min_value_loss: 0.000
+	weight: 0.419, max_weight: 0.700, min_weight: 0.300
+	v: 78.631, max_v: 108.996, min_v: 7.888
+	q1: 78.566, max_q1: 109.312, min_q1: 6.558
+	q2: 78.608, max_q2: 109.245, min_q2: 7.154
+	target_q: 78.506, max_target_q: 109.645, min_target_q: 7.484
+
+2023-03-21 00:14:24 - 
+[#Step 370000] eval_reward: -0.264, eval_time: 5.450, time: 16.213
+	critic_loss: 1.114, max_critic_loss: 26.019, min_critic_loss: 0.002
+	actor_loss: -78.409, max_actor_loss: -42.593, min_actor_loss: -109.109
+	value_loss: 0.190, max_value_loss: 5.974, min_value_loss: 0.000
+	weight: 0.416, max_weight: 0.700, min_weight: 0.300
+	v: 73.275, max_v: 109.326, min_v: 43.542
+	q1: 73.060, max_q1: 109.296, min_q1: 42.213
+	q2: 72.972, max_q2: 109.250, min_q2: 42.538
+	target_q: 73.162, max_target_q: 109.371, min_target_q: 41.849
+
+2023-03-21 00:14:49 - 
+[#Step 380000] eval_reward: 0.161, eval_time: 5.630, time: 16.622
+	critic_loss: 1.017, max_critic_loss: 16.543, min_critic_loss: 0.002
+	actor_loss: -83.073, max_actor_loss: -6.322, min_actor_loss: -109.597
+	value_loss: 0.139, max_value_loss: 5.218, min_value_loss: 0.000
+	weight: 0.416, max_weight: 0.700, min_weight: 0.300
+	v: 78.932, max_v: 110.178, min_v: 6.375
+	q1: 78.721, max_q1: 109.947, min_q1: 6.022
+	q2: 78.610, max_q2: 109.754, min_q2: 6.066
+	target_q: 78.936, max_target_q: 110.193, min_target_q: 5.700
+
+2023-03-21 00:15:15 - 
+[#Step 390000] eval_reward: -0.907, eval_time: 5.500, time: 17.055
+	critic_loss: 0.693, max_critic_loss: 21.256, min_critic_loss: 0.004
+	actor_loss: -83.280, max_actor_loss: -47.926, min_actor_loss: -108.826
+	value_loss: 0.648, max_value_loss: 70.254, min_value_loss: 0.000
+	weight: 0.491, max_weight: 0.700, min_weight: 0.300
+	v: 78.009, max_v: 108.938, min_v: 47.599
+	q1: 77.854, max_q1: 109.271, min_q1: 47.028
+	q2: 77.865, max_q2: 109.188, min_q2: 47.396
+	target_q: 77.875, max_target_q: 109.054, min_target_q: 47.654
+
+2023-03-21 00:15:35 - Saving checkpoint at step: 80
+2023-03-21 00:15:35 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_80
+2023-03-21 00:15:35 - Saving checkpoint at step: 80
+2023-03-21 00:15:35 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_80
+2023-03-21 00:15:35 - Saving checkpoint at step: 80
+2023-03-21 00:15:35 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_80
+2023-03-21 00:15:40 - 
+[#Step 400000] eval_reward: -0.182, eval_time: 5.413, time: 17.479
+	critic_loss: 0.838, max_critic_loss: 15.250, min_critic_loss: 0.001
+	actor_loss: -80.602, max_actor_loss: -6.458, min_actor_loss: -110.701
+	value_loss: 0.178, max_value_loss: 7.674, min_value_loss: 0.000
+	weight: 0.436, max_weight: 0.700, min_weight: 0.300
+	v: 75.352, max_v: 109.982, min_v: 6.925
+	q1: 75.340, max_q1: 110.406, min_q1: 5.767
+	q2: 75.331, max_q2: 110.361, min_q2: 6.075
+	target_q: 75.071, max_target_q: 109.549, min_target_q: 7.199
+
+2023-03-21 00:16:05 - 
+[#Step 410000] eval_reward: -1.465, eval_time: 5.500, time: 17.892
+	critic_loss: 2.361, max_critic_loss: 65.488, min_critic_loss: 0.001
+	actor_loss: -79.302, max_actor_loss: -7.619, min_actor_loss: -110.341
+	value_loss: 0.375, max_value_loss: 20.676, min_value_loss: 0.000
+	weight: 0.470, max_weight: 0.700, min_weight: 0.300
+	v: 73.149, max_v: 109.622, min_v: 8.085
+	q1: 73.326, max_q1: 110.449, min_q1: 7.742
+	q2: 73.357, max_q2: 110.736, min_q2: 7.752
+	target_q: 73.135, max_target_q: 109.360, min_target_q: 7.994
+
+2023-03-21 00:16:31 - 
+[#Step 420000] eval_reward: -0.809, eval_time: 5.698, time: 18.324
+	critic_loss: 1.401, max_critic_loss: 38.378, min_critic_loss: 0.001
+	actor_loss: -82.903, max_actor_loss: -7.211, min_actor_loss: -108.365
+	value_loss: 0.184, max_value_loss: 5.332, min_value_loss: 0.000
+	weight: 0.466, max_weight: 0.700, min_weight: 0.300
+	v: 78.886, max_v: 108.886, min_v: 7.928
+	q1: 78.818, max_q1: 108.748, min_q1: 6.353
+	q2: 78.791, max_q2: 108.904, min_q2: 6.613
+	target_q: 78.845, max_target_q: 108.780, min_target_q: 8.136
+
+2023-03-21 00:16:56 - 
+[#Step 430000] eval_reward: 0.107, eval_time: 5.705, time: 18.748
+	critic_loss: 1.051, max_critic_loss: 40.704, min_critic_loss: 0.001
+	actor_loss: -80.463, max_actor_loss: -46.046, min_actor_loss: -109.353
+	value_loss: 0.119, max_value_loss: 2.025, min_value_loss: 0.000
+	weight: 0.478, max_weight: 0.700, min_weight: 0.300
+	v: 74.452, max_v: 108.740, min_v: 43.330
+	q1: 74.477, max_q1: 109.199, min_q1: 42.279
+	q2: 74.611, max_q2: 109.323, min_q2: 43.351
+	target_q: 74.532, max_target_q: 109.324, min_target_q: 41.740
+
+2023-03-21 00:17:22 - 
+[#Step 440000] eval_reward: -0.461, eval_time: 5.943, time: 19.168
+	critic_loss: 0.955, max_critic_loss: 29.333, min_critic_loss: 0.001
+	actor_loss: -80.538, max_actor_loss: -6.768, min_actor_loss: -109.292
+	value_loss: 0.325, max_value_loss: 28.764, min_value_loss: 0.000
+	weight: 0.397, max_weight: 0.700, min_weight: 0.300
+	v: 75.637, max_v: 109.219, min_v: 8.012
+	q1: 75.356, max_q1: 109.261, min_q1: 7.507
+	q2: 75.330, max_q2: 109.059, min_q2: 7.617
+	target_q: 75.563, max_target_q: 109.340, min_target_q: 5.773
+
+2023-03-21 00:17:47 - 
+[#Step 450000] eval_reward: -0.192, eval_time: 5.602, time: 19.587
+	critic_loss: 1.163, max_critic_loss: 54.028, min_critic_loss: 0.002
+	actor_loss: -82.704, max_actor_loss: -7.415, min_actor_loss: -109.493
+	value_loss: 0.305, max_value_loss: 20.049, min_value_loss: 0.000
+	weight: 0.442, max_weight: 0.700, min_weight: 0.300
+	v: 78.441, max_v: 109.592, min_v: 7.558
+	q1: 78.310, max_q1: 109.407, min_q1: 7.092
+	q2: 78.262, max_q2: 109.557, min_q2: 6.685
+	target_q: 78.293, max_target_q: 109.433, min_target_q: 6.126
+
+2023-03-21 00:18:12 - 
+[#Step 460000] eval_reward: 0.677, eval_time: 5.490, time: 20.004
+	critic_loss: 0.962, max_critic_loss: 31.047, min_critic_loss: 0.002
+	actor_loss: -82.776, max_actor_loss: -7.855, min_actor_loss: -109.993
+	value_loss: 0.290, max_value_loss: 33.775, min_value_loss: 0.000
+	weight: 0.402, max_weight: 0.700, min_weight: 0.300
+	v: 77.674, max_v: 109.719, min_v: 8.738
+	q1: 77.457, max_q1: 109.562, min_q1: 7.894
+	q2: 77.507, max_q2: 109.701, min_q2: 7.500
+	target_q: 77.694, max_target_q: 109.388, min_target_q: 8.367
+
+2023-03-21 00:18:37 - 
+[#Step 470000] eval_reward: -0.298, eval_time: 5.747, time: 20.422
+	critic_loss: 1.195, max_critic_loss: 55.131, min_critic_loss: 0.001
+	actor_loss: -81.844, max_actor_loss: -9.953, min_actor_loss: -108.742
+	value_loss: 0.217, max_value_loss: 11.292, min_value_loss: 0.000
+	weight: 0.541, max_weight: 0.700, min_weight: 0.300
+	v: 76.899, max_v: 108.666, min_v: 7.950
+	q1: 77.039, max_q1: 109.127, min_q1: 9.351
+	q2: 77.061, max_q2: 109.293, min_q2: 9.060
+	target_q: 76.984, max_target_q: 109.635, min_target_q: 6.976
+
+2023-03-21 00:19:02 - 
+[#Step 480000] eval_reward: 1.399, eval_time: 5.761, time: 20.841
+	critic_loss: 1.019, max_critic_loss: 76.780, min_critic_loss: 0.001
+	actor_loss: -82.368, max_actor_loss: -43.507, min_actor_loss: -109.466
+	value_loss: 0.157, max_value_loss: 5.521, min_value_loss: 0.000
+	weight: 0.455, max_weight: 0.700, min_weight: 0.300
+	v: 77.662, max_v: 109.706, min_v: 43.918
+	q1: 77.430, max_q1: 109.378, min_q1: 43.571
+	q2: 77.489, max_q2: 109.286, min_q2: 44.197
+	target_q: 77.669, max_target_q: 110.204, min_target_q: 43.543
+
+2023-03-21 00:19:27 - 
+[#Step 490000] eval_reward: 1.117, eval_time: 5.701, time: 21.263
+	critic_loss: 0.754, max_critic_loss: 15.657, min_critic_loss: 0.000
+	actor_loss: -79.680, max_actor_loss: -7.142, min_actor_loss: -109.374
+	value_loss: 0.175, max_value_loss: 6.110, min_value_loss: 0.000
+	weight: 0.483, max_weight: 0.700, min_weight: 0.300
+	v: 74.479, max_v: 109.008, min_v: 5.951
+	q1: 74.363, max_q1: 108.980, min_q1: 7.499
+	q2: 74.387, max_q2: 108.933, min_q2: 6.625
+	target_q: 74.412, max_target_q: 109.421, min_target_q: 6.064
+
+2023-03-21 00:19:48 - Saving checkpoint at step: 100
+2023-03-21 00:19:48 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_100
+2023-03-21 00:19:48 - Saving checkpoint at step: 100
+2023-03-21 00:19:48 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_100
+2023-03-21 00:19:48 - Saving checkpoint at step: 100
+2023-03-21 00:19:48 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_100
+2023-03-21 00:19:53 - 
+[#Step 500000] eval_reward: 1.229, eval_time: 5.733, time: 21.697
+	critic_loss: 2.397, max_critic_loss: 115.864, min_critic_loss: 0.007
+	actor_loss: -82.411, max_actor_loss: -9.471, min_actor_loss: -110.193
+	value_loss: 0.265, max_value_loss: 27.489, min_value_loss: 0.000
+	weight: 0.522, max_weight: 0.700, min_weight: 0.300
+	v: 77.122, max_v: 109.329, min_v: 7.192
+	q1: 77.465, max_q1: 110.113, min_q1: 9.742
+	q2: 77.577, max_q2: 110.386, min_q2: 9.185
+	target_q: 76.861, max_target_q: 109.170, min_target_q: 6.823
+
+2023-03-21 00:20:19 - 
+[#Step 510000] eval_reward: 1.264, eval_time: 5.764, time: 22.122
+	critic_loss: 1.033, max_critic_loss: 45.189, min_critic_loss: 0.001
+	actor_loss: -81.177, max_actor_loss: -42.931, min_actor_loss: -108.977
+	value_loss: 0.442, max_value_loss: 73.368, min_value_loss: 0.000
+	weight: 0.406, max_weight: 0.700, min_weight: 0.300
+	v: 76.070, max_v: 109.244, min_v: 42.338
+	q1: 76.026, max_q1: 109.271, min_q1: 42.534
+	q2: 76.029, max_q2: 109.090, min_q2: 42.780
+	target_q: 76.125, max_target_q: 109.076, min_target_q: 42.809
+
+2023-03-21 00:20:44 - 
+[#Step 520000] eval_reward: 0.468, eval_time: 5.883, time: 22.542
+	critic_loss: 2.927, max_critic_loss: 303.286, min_critic_loss: 0.002
+	actor_loss: -79.600, max_actor_loss: -7.184, min_actor_loss: -109.231
+	value_loss: 0.472, max_value_loss: 46.924, min_value_loss: 0.000
+	weight: 0.403, max_weight: 0.700, min_weight: 0.300
+	v: 74.174, max_v: 109.420, min_v: 6.184
+	q1: 74.274, max_q1: 109.158, min_q1: 7.152
+	q2: 74.308, max_q2: 109.461, min_q2: 7.120
+	target_q: 74.295, max_target_q: 109.531, min_target_q: 7.462
+
+2023-03-21 00:21:10 - 
+[#Step 530000] eval_reward: 0.882, eval_time: 5.895, time: 22.969
+	critic_loss: 1.073, max_critic_loss: 30.841, min_critic_loss: 0.002
+	actor_loss: -83.399, max_actor_loss: -47.542, min_actor_loss: -108.294
+	value_loss: 0.138, max_value_loss: 3.381, min_value_loss: 0.000
+	weight: 0.567, max_weight: 0.700, min_weight: 0.300
+	v: 78.843, max_v: 108.376, min_v: 46.620
+	q1: 78.974, max_q1: 108.476, min_q1: 45.882
+	q2: 79.065, max_q2: 108.769, min_q2: 45.810
+	target_q: 78.851, max_target_q: 108.359, min_target_q: 44.846
+
+2023-03-21 00:21:36 - 
+[#Step 540000] eval_reward: 1.153, eval_time: 5.631, time: 23.400
+	critic_loss: 1.397, max_critic_loss: 75.942, min_critic_loss: 0.001
+	actor_loss: -82.014, max_actor_loss: -45.094, min_actor_loss: -108.415
+	value_loss: 0.228, max_value_loss: 13.275, min_value_loss: 0.000
+	weight: 0.500, max_weight: 0.700, min_weight: 0.300
+	v: 76.602, max_v: 108.139, min_v: 44.868
+	q1: 76.562, max_q1: 108.641, min_q1: 41.992
+	q2: 76.565, max_q2: 108.814, min_q2: 43.190
+	target_q: 76.535, max_target_q: 108.393, min_target_q: 41.896
+
+2023-03-21 00:22:00 - 
+[#Step 550000] eval_reward: 1.938, eval_time: 5.423, time: 23.816
+	critic_loss: 1.182, max_critic_loss: 35.079, min_critic_loss: 0.001
+	actor_loss: -82.419, max_actor_loss: -7.504, min_actor_loss: -108.971
+	value_loss: 0.311, max_value_loss: 16.283, min_value_loss: 0.000
+	weight: 0.394, max_weight: 0.700, min_weight: 0.300
+	v: 77.093, max_v: 109.168, min_v: 7.036
+	q1: 76.867, max_q1: 109.255, min_q1: 7.238
+	q2: 76.889, max_q2: 109.388, min_q2: 7.435
+	target_q: 77.074, max_target_q: 109.122, min_target_q: 6.640
+
+2023-03-21 00:22:25 - 
+[#Step 560000] eval_reward: -0.267, eval_time: 5.723, time: 24.231
+	critic_loss: 1.228, max_critic_loss: 46.293, min_critic_loss: 0.000
+	actor_loss: -80.346, max_actor_loss: -30.107, min_actor_loss: -108.763
+	value_loss: 0.510, max_value_loss: 49.613, min_value_loss: 0.000
+	weight: 0.489, max_weight: 0.700, min_weight: 0.300
+	v: 75.035, max_v: 108.825, min_v: 28.154
+	q1: 75.214, max_q1: 109.152, min_q1: 30.011
+	q2: 75.230, max_q2: 108.792, min_q2: 28.554
+	target_q: 75.127, max_target_q: 108.295, min_target_q: 29.064
+
+2023-03-21 00:22:50 - 
+[#Step 570000] eval_reward: 1.235, eval_time: 5.433, time: 24.642
+	critic_loss: 1.434, max_critic_loss: 111.593, min_critic_loss: 0.001
+	actor_loss: -78.614, max_actor_loss: -6.259, min_actor_loss: -110.029
+	value_loss: 0.480, max_value_loss: 60.030, min_value_loss: 0.000
+	weight: 0.452, max_weight: 0.700, min_weight: 0.300
+	v: 73.411, max_v: 110.555, min_v: 6.740
+	q1: 73.438, max_q1: 110.295, min_q1: 6.207
+	q2: 73.441, max_q2: 110.270, min_q2: 6.962
+	target_q: 73.419, max_target_q: 110.120, min_target_q: 6.139
+
+2023-03-21 00:23:15 - 
+[#Step 580000] eval_reward: 2.774, eval_time: 5.314, time: 25.052
+	critic_loss: 0.883, max_critic_loss: 17.188, min_critic_loss: 0.000
+	actor_loss: -80.895, max_actor_loss: -43.661, min_actor_loss: -108.486
+	value_loss: 0.192, max_value_loss: 15.906, min_value_loss: 0.000
+	weight: 0.523, max_weight: 0.700, min_weight: 0.300
+	v: 75.578, max_v: 108.630, min_v: 42.015
+	q1: 75.610, max_q1: 108.438, min_q1: 40.939
+	q2: 75.545, max_q2: 108.604, min_q2: 38.816
+	target_q: 75.486, max_target_q: 108.387, min_target_q: 42.600
+
+2023-03-21 00:23:40 - 
+[#Step 590000] eval_reward: 0.003, eval_time: 5.611, time: 25.467
+	critic_loss: 1.131, max_critic_loss: 98.054, min_critic_loss: 0.001
+	actor_loss: -83.033, max_actor_loss: -6.788, min_actor_loss: -108.724
+	value_loss: 0.196, max_value_loss: 14.067, min_value_loss: 0.000
+	weight: 0.458, max_weight: 0.700, min_weight: 0.300
+	v: 78.125, max_v: 108.710, min_v: 8.248
+	q1: 78.081, max_q1: 108.439, min_q1: 6.441
+	q2: 78.079, max_q2: 108.528, min_q2: 7.282
+	target_q: 78.065, max_target_q: 108.450, min_target_q: 6.723
+
+2023-03-21 00:23:59 - Saving checkpoint at step: 120
+2023-03-21 00:23:59 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_120
+2023-03-21 00:23:59 - Saving checkpoint at step: 120
+2023-03-21 00:23:59 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_120
+2023-03-21 00:23:59 - Saving checkpoint at step: 120
+2023-03-21 00:23:59 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_120
+2023-03-21 00:24:04 - 
+[#Step 600000] eval_reward: 1.462, eval_time: 5.394, time: 25.877
+	critic_loss: 0.834, max_critic_loss: 27.031, min_critic_loss: 0.001
+	actor_loss: -79.421, max_actor_loss: -30.425, min_actor_loss: -108.573
+	value_loss: 0.161, max_value_loss: 4.813, min_value_loss: 0.000
+	weight: 0.436, max_weight: 0.700, min_weight: 0.300
+	v: 73.470, max_v: 109.051, min_v: 28.418
+	q1: 73.251, max_q1: 108.504, min_q1: 30.636
+	q2: 73.232, max_q2: 108.601, min_q2: 29.330
+	target_q: 73.206, max_target_q: 108.776, min_target_q: 26.365
+
+2023-03-21 00:24:29 - 
+[#Step 610000] eval_reward: 1.552, eval_time: 5.321, time: 26.286
+	critic_loss: 1.026, max_critic_loss: 18.609, min_critic_loss: 0.001
+	actor_loss: -79.289, max_actor_loss: -7.165, min_actor_loss: -108.995
+	value_loss: 0.170, max_value_loss: 10.479, min_value_loss: 0.000
+	weight: 0.494, max_weight: 0.700, min_weight: 0.300
+	v: 73.132, max_v: 109.121, min_v: 6.812
+	q1: 73.242, max_q1: 108.675, min_q1: 8.684
+	q2: 73.152, max_q2: 108.815, min_q2: 7.058
+	target_q: 73.287, max_target_q: 108.832, min_target_q: 6.546
+
+2023-03-21 00:24:53 - 
+[#Step 620000] eval_reward: 1.226, eval_time: 5.530, time: 26.697
+	critic_loss: 0.925, max_critic_loss: 24.606, min_critic_loss: 0.002
+	actor_loss: -81.786, max_actor_loss: -44.386, min_actor_loss: -108.742
+	value_loss: 0.169, max_value_loss: 13.695, min_value_loss: 0.000
+	weight: 0.408, max_weight: 0.700, min_weight: 0.300
+	v: 77.117, max_v: 109.205, min_v: 45.477
+	q1: 76.874, max_q1: 108.901, min_q1: 44.551
+	q2: 76.870, max_q2: 108.855, min_q2: 44.710
+	target_q: 77.003, max_target_q: 109.815, min_target_q: 43.181
+
+2023-03-21 00:25:18 - 
+[#Step 630000] eval_reward: 1.458, eval_time: 5.616, time: 27.109
+	critic_loss: 1.807, max_critic_loss: 51.780, min_critic_loss: 0.000
+	actor_loss: -81.580, max_actor_loss: -7.921, min_actor_loss: -108.897
+	value_loss: 0.459, max_value_loss: 62.961, min_value_loss: 0.000
+	weight: 0.520, max_weight: 0.700, min_weight: 0.300
+	v: 76.768, max_v: 108.354, min_v: 8.527
+	q1: 76.933, max_q1: 109.215, min_q1: 8.032
+	q2: 76.850, max_q2: 109.499, min_q2: 7.923
+	target_q: 76.480, max_target_q: 108.871, min_target_q: 7.636
+
+2023-03-21 00:25:43 - 
+[#Step 640000] eval_reward: 0.343, eval_time: 5.556, time: 27.521
+	critic_loss: 1.991, max_critic_loss: 255.908, min_critic_loss: 0.000
+	actor_loss: -80.053, max_actor_loss: -5.877, min_actor_loss: -107.762
+	value_loss: 0.721, max_value_loss: 88.427, min_value_loss: 0.000
+	weight: 0.519, max_weight: 0.700, min_weight: 0.300
+	v: 74.887, max_v: 108.139, min_v: 7.403
+	q1: 75.046, max_q1: 107.828, min_q1: 5.677
+	q2: 75.021, max_q2: 107.918, min_q2: 5.330
+	target_q: 74.883, max_target_q: 108.283, min_target_q: 6.145
+
+2023-03-21 00:26:08 - 
+[#Step 650000] eval_reward: 0.184, eval_time: 5.666, time: 27.933
+	critic_loss: 0.799, max_critic_loss: 13.900, min_critic_loss: 0.001
+	actor_loss: -84.562, max_actor_loss: -6.562, min_actor_loss: -108.662
+	value_loss: 0.196, max_value_loss: 9.518, min_value_loss: 0.000
+	weight: 0.478, max_weight: 0.700, min_weight: 0.300
+	v: 80.014, max_v: 108.499, min_v: 6.715
+	q1: 80.026, max_q1: 108.600, min_q1: 6.415
+	q2: 80.017, max_q2: 108.737, min_q2: 6.845
+	target_q: 80.016, max_target_q: 108.199, min_target_q: 7.294
+
+2023-03-21 00:26:32 - 
+[#Step 660000] eval_reward: 3.387, eval_time: 5.615, time: 28.346
+	critic_loss: 2.068, max_critic_loss: 102.382, min_critic_loss: 0.001
+	actor_loss: -82.770, max_actor_loss: -6.702, min_actor_loss: -108.935
+	value_loss: 0.236, max_value_loss: 19.211, min_value_loss: 0.000
+	weight: 0.462, max_weight: 0.700, min_weight: 0.300
+	v: 77.673, max_v: 109.767, min_v: 5.312
+	q1: 77.614, max_q1: 109.056, min_q1: 6.060
+	q2: 77.600, max_q2: 109.086, min_q2: 5.987
+	target_q: 77.701, max_target_q: 109.686, min_target_q: 4.716
+
+2023-03-21 00:26:57 - 
+[#Step 670000] eval_reward: 2.791, eval_time: 5.369, time: 28.751
+	critic_loss: 0.942, max_critic_loss: 23.829, min_critic_loss: 0.003
+	actor_loss: -80.773, max_actor_loss: -9.984, min_actor_loss: -109.069
+	value_loss: 0.306, max_value_loss: 18.480, min_value_loss: 0.000
+	weight: 0.428, max_weight: 0.700, min_weight: 0.300
+	v: 75.286, max_v: 109.868, min_v: 9.130
+	q1: 74.966, max_q1: 109.094, min_q1: 9.548
+	q2: 74.953, max_q2: 108.785, min_q2: 11.298
+	target_q: 75.004, max_target_q: 109.597, min_target_q: 8.234
+
+2023-03-21 00:27:21 - 
+[#Step 680000] eval_reward: 2.970, eval_time: 5.479, time: 29.163
+	critic_loss: 0.867, max_critic_loss: 22.122, min_critic_loss: 0.000
+	actor_loss: -81.534, max_actor_loss: -47.293, min_actor_loss: -109.384
+	value_loss: 0.153, max_value_loss: 8.532, min_value_loss: 0.000
+	weight: 0.464, max_weight: 0.700, min_weight: 0.300
+	v: 75.961, max_v: 109.440, min_v: 41.463
+	q1: 75.882, max_q1: 109.321, min_q1: 39.700
+	q2: 75.887, max_q2: 109.308, min_q2: 41.187
+	target_q: 75.846, max_target_q: 109.218, min_target_q: 40.230
+
+2023-03-21 00:27:46 - 
+[#Step 690000] eval_reward: 0.754, eval_time: 5.478, time: 29.570
+	critic_loss: 0.714, max_critic_loss: 10.316, min_critic_loss: 0.000
+	actor_loss: -80.476, max_actor_loss: -42.787, min_actor_loss: -108.066
+	value_loss: 0.384, max_value_loss: 53.352, min_value_loss: 0.000
+	weight: 0.453, max_weight: 0.700, min_weight: 0.300
+	v: 74.968, max_v: 108.498, min_v: 44.605
+	q1: 74.810, max_q1: 108.641, min_q1: 43.602
+	q2: 74.741, max_q2: 108.331, min_q2: 43.692
+	target_q: 74.891, max_target_q: 108.661, min_target_q: 43.407
+
+2023-03-21 00:28:05 - Saving checkpoint at step: 140
+2023-03-21 00:28:05 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_140
+2023-03-21 00:28:05 - Saving checkpoint at step: 140
+2023-03-21 00:28:05 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_140
+2023-03-21 00:28:05 - Saving checkpoint at step: 140
+2023-03-21 00:28:05 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_140
+2023-03-21 00:28:11 - 
+[#Step 700000] eval_reward: 1.582, eval_time: 5.595, time: 29.988
+	critic_loss: 1.173, max_critic_loss: 36.817, min_critic_loss: 0.000
+	actor_loss: -81.290, max_actor_loss: -44.047, min_actor_loss: -108.288
+	value_loss: 0.229, max_value_loss: 12.356, min_value_loss: 0.000
+	weight: 0.475, max_weight: 0.700, min_weight: 0.300
+	v: 75.129, max_v: 107.969, min_v: 43.934
+	q1: 75.122, max_q1: 108.394, min_q1: 43.026
+	q2: 75.055, max_q2: 108.295, min_q2: 42.303
+	target_q: 74.885, max_target_q: 108.274, min_target_q: 41.276
+
+2023-03-21 00:28:35 - 
+[#Step 710000] eval_reward: 2.591, eval_time: 5.368, time: 30.393
+	critic_loss: 0.911, max_critic_loss: 35.475, min_critic_loss: 0.001
+	actor_loss: -81.529, max_actor_loss: -5.924, min_actor_loss: -108.469
+	value_loss: 0.260, max_value_loss: 35.964, min_value_loss: 0.000
+	weight: 0.480, max_weight: 0.700, min_weight: 0.300
+	v: 75.421, max_v: 108.702, min_v: 5.345
+	q1: 75.329, max_q1: 108.167, min_q1: 5.615
+	q2: 75.335, max_q2: 107.990, min_q2: 5.063
+	target_q: 75.469, max_target_q: 108.407, min_target_q: 4.413
+
+2023-03-21 00:29:00 - 
+[#Step 720000] eval_reward: 2.369, eval_time: 5.460, time: 30.801
+	critic_loss: 1.200, max_critic_loss: 19.431, min_critic_loss: 0.000
+	actor_loss: -81.673, max_actor_loss: -36.303, min_actor_loss: -109.937
+	value_loss: 0.234, max_value_loss: 10.637, min_value_loss: 0.000
+	weight: 0.497, max_weight: 0.700, min_weight: 0.300
+	v: 76.681, max_v: 109.212, min_v: 32.983
+	q1: 76.748, max_q1: 109.994, min_q1: 34.978
+	q2: 76.780, max_q2: 110.192, min_q2: 32.190
+	target_q: 76.525, max_target_q: 108.675, min_target_q: 34.058
+
+2023-03-21 00:29:24 - 
+[#Step 730000] eval_reward: 2.523, eval_time: 5.448, time: 31.212
+	critic_loss: 1.287, max_critic_loss: 49.626, min_critic_loss: 0.000
+	actor_loss: -82.912, max_actor_loss: -48.716, min_actor_loss: -107.453
+	value_loss: 0.258, max_value_loss: 29.478, min_value_loss: 0.000
+	weight: 0.412, max_weight: 0.700, min_weight: 0.300
+	v: 77.233, max_v: 108.506, min_v: 43.425
+	q1: 77.084, max_q1: 108.207, min_q1: 42.748
+	q2: 77.048, max_q2: 108.111, min_q2: 42.973
+	target_q: 77.202, max_target_q: 108.670, min_target_q: 43.035
+
+2023-03-21 00:29:49 - 
+[#Step 740000] eval_reward: 2.393, eval_time: 5.423, time: 31.621
+	critic_loss: 1.744, max_critic_loss: 62.014, min_critic_loss: 0.000
+	actor_loss: -81.746, max_actor_loss: -4.374, min_actor_loss: -107.441
+	value_loss: 0.228, max_value_loss: 13.650, min_value_loss: 0.000
+	weight: 0.391, max_weight: 0.700, min_weight: 0.300
+	v: 76.150, max_v: 108.724, min_v: 5.146
+	q1: 75.905, max_q1: 108.218, min_q1: 4.024
+	q2: 75.901, max_q2: 108.164, min_q2: 3.532
+	target_q: 76.158, max_target_q: 108.981, min_target_q: 5.142
+
+2023-03-21 00:30:13 - 
+[#Step 750000] eval_reward: 3.192, eval_time: 5.461, time: 32.031
+	critic_loss: 0.782, max_critic_loss: 15.958, min_critic_loss: 0.003
+	actor_loss: -84.754, max_actor_loss: -31.567, min_actor_loss: -107.731
+	value_loss: 0.204, max_value_loss: 14.409, min_value_loss: 0.000
+	weight: 0.445, max_weight: 0.700, min_weight: 0.300
+	v: 79.495, max_v: 108.137, min_v: 32.882
+	q1: 79.211, max_q1: 107.803, min_q1: 30.419
+	q2: 79.256, max_q2: 107.850, min_q2: 31.753
+	target_q: 79.388, max_target_q: 108.283, min_target_q: 31.460
+
+2023-03-21 00:30:38 - 
+[#Step 760000] eval_reward: 1.794, eval_time: 5.508, time: 32.442
+	critic_loss: 0.972, max_critic_loss: 37.408, min_critic_loss: 0.000
+	actor_loss: -82.085, max_actor_loss: -44.364, min_actor_loss: -107.934
+	value_loss: 0.335, max_value_loss: 55.717, min_value_loss: 0.000
+	weight: 0.402, max_weight: 0.700, min_weight: 0.300
+	v: 76.274, max_v: 107.775, min_v: 42.277
+	q1: 76.307, max_q1: 108.130, min_q1: 41.376
+	q2: 76.230, max_q2: 108.018, min_q2: 45.241
+	target_q: 76.297, max_target_q: 107.928, min_target_q: 46.548
+
+2023-03-21 00:31:02 - 
+[#Step 770000] eval_reward: 3.419, eval_time: 5.363, time: 32.844
+	critic_loss: 2.392, max_critic_loss: 244.919, min_critic_loss: 0.002
+	actor_loss: -80.313, max_actor_loss: -5.627, min_actor_loss: -108.987
+	value_loss: 0.352, max_value_loss: 30.447, min_value_loss: 0.000
+	weight: 0.359, max_weight: 0.700, min_weight: 0.300
+	v: 74.811, max_v: 108.611, min_v: 6.425
+	q1: 74.522, max_q1: 108.590, min_q1: 4.652
+	q2: 74.532, max_q2: 108.578, min_q2: 5.723
+	target_q: 74.497, max_target_q: 108.699, min_target_q: 5.736
+
+2023-03-21 00:31:26 - 
+[#Step 780000] eval_reward: 2.710, eval_time: 5.517, time: 33.249
+	critic_loss: 0.822, max_critic_loss: 20.671, min_critic_loss: 0.000
+	actor_loss: -80.949, max_actor_loss: -5.061, min_actor_loss: -108.108
+	value_loss: 0.425, max_value_loss: 74.882, min_value_loss: 0.000
+	weight: 0.433, max_weight: 0.700, min_weight: 0.300
+	v: 75.840, max_v: 108.056, min_v: 4.626
+	q1: 75.629, max_q1: 107.917, min_q1: 5.002
+	q2: 75.636, max_q2: 107.978, min_q2: 5.486
+	target_q: 75.849, max_target_q: 108.320, min_target_q: 4.795
+
+2023-03-21 00:31:51 - 
+[#Step 790000] eval_reward: 1.359, eval_time: 5.345, time: 33.653
+	critic_loss: 0.895, max_critic_loss: 46.816, min_critic_loss: 0.001
+	actor_loss: -82.328, max_actor_loss: -27.414, min_actor_loss: -107.801
+	value_loss: 0.134, max_value_loss: 2.692, min_value_loss: 0.000
+	weight: 0.397, max_weight: 0.700, min_weight: 0.300
+	v: 76.831, max_v: 108.169, min_v: 25.823
+	q1: 76.782, max_q1: 108.247, min_q1: 27.567
+	q2: 76.694, max_q2: 108.022, min_q2: 26.726
+	target_q: 76.525, max_target_q: 108.266, min_target_q: 25.924
+
+2023-03-21 00:32:10 - Saving checkpoint at step: 160
+2023-03-21 00:32:10 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_160
+2023-03-21 00:32:10 - Saving checkpoint at step: 160
+2023-03-21 00:32:10 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_160
+2023-03-21 00:32:10 - Saving checkpoint at step: 160
+2023-03-21 00:32:10 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_160
+2023-03-21 00:32:15 - 
+[#Step 800000] eval_reward: 3.860, eval_time: 5.342, time: 34.058
+	critic_loss: 1.180, max_critic_loss: 65.250, min_critic_loss: 0.001
+	actor_loss: -82.151, max_actor_loss: -45.689, min_actor_loss: -108.078
+	value_loss: 0.252, max_value_loss: 21.418, min_value_loss: 0.000
+	weight: 0.394, max_weight: 0.700, min_weight: 0.300
+	v: 76.576, max_v: 108.072, min_v: 44.724
+	q1: 76.454, max_q1: 108.352, min_q1: 45.259
+	q2: 76.481, max_q2: 108.202, min_q2: 45.324
+	target_q: 76.374, max_target_q: 108.223, min_target_q: 45.838
+
+2023-03-21 00:32:39 - 
+[#Step 810000] eval_reward: 2.382, eval_time: 4.717, time: 34.452
+	critic_loss: 1.846, max_critic_loss: 210.138, min_critic_loss: 0.000
+	actor_loss: -81.057, max_actor_loss: -34.447, min_actor_loss: -107.614
+	value_loss: 0.257, max_value_loss: 15.595, min_value_loss: 0.000
+	weight: 0.405, max_weight: 0.700, min_weight: 0.300
+	v: 75.202, max_v: 108.263, min_v: 34.784
+	q1: 75.030, max_q1: 108.230, min_q1: 34.267
+	q2: 75.050, max_q2: 108.034, min_q2: 34.093
+	target_q: 74.968, max_target_q: 107.724, min_target_q: 33.014
+
+2023-03-21 00:33:03 - 
+[#Step 820000] eval_reward: 2.927, eval_time: 5.393, time: 34.858
+	critic_loss: 0.965, max_critic_loss: 26.810, min_critic_loss: 0.002
+	actor_loss: -81.690, max_actor_loss: -5.939, min_actor_loss: -108.149
+	value_loss: 0.457, max_value_loss: 66.414, min_value_loss: 0.000
+	weight: 0.431, max_weight: 0.700, min_weight: 0.300
+	v: 75.860, max_v: 108.162, min_v: 5.788
+	q1: 75.838, max_q1: 108.416, min_q1: 6.785
+	q2: 75.875, max_q2: 108.516, min_q2: 6.234
+	target_q: 75.746, max_target_q: 108.531, min_target_q: 5.790
+
+2023-03-21 00:33:27 - 
+[#Step 830000] eval_reward: 3.610, eval_time: 5.303, time: 35.261
+	critic_loss: 1.152, max_critic_loss: 33.290, min_critic_loss: 0.001
+	actor_loss: -81.392, max_actor_loss: -38.303, min_actor_loss: -107.757
+	value_loss: 0.189, max_value_loss: 6.956, min_value_loss: 0.000
+	weight: 0.500, max_weight: 0.700, min_weight: 0.300
+	v: 76.727, max_v: 107.624, min_v: 34.743
+	q1: 76.963, max_q1: 108.232, min_q1: 35.884
+	q2: 77.000, max_q2: 108.250, min_q2: 36.316
+	target_q: 76.594, max_target_q: 107.650, min_target_q: 36.447
+
+2023-03-21 00:33:52 - 
+[#Step 840000] eval_reward: 1.163, eval_time: 5.373, time: 35.669
+	critic_loss: 2.014, max_critic_loss: 167.994, min_critic_loss: 0.000
+	actor_loss: -83.050, max_actor_loss: -37.856, min_actor_loss: -108.267
+	value_loss: 0.297, max_value_loss: 26.802, min_value_loss: 0.000
+	weight: 0.455, max_weight: 0.700, min_weight: 0.300
+	v: 77.848, max_v: 107.548, min_v: 40.841
+	q1: 77.846, max_q1: 108.891, min_q1: 40.892
+	q2: 77.853, max_q2: 109.009, min_q2: 39.686
+	target_q: 77.789, max_target_q: 108.336, min_target_q: 38.604
+
+2023-03-21 00:34:16 - 
+[#Step 850000] eval_reward: 2.764, eval_time: 5.356, time: 36.075
+	critic_loss: 1.214, max_critic_loss: 45.307, min_critic_loss: 0.001
+	actor_loss: -81.106, max_actor_loss: -6.586, min_actor_loss: -108.213
+	value_loss: 0.190, max_value_loss: 14.864, min_value_loss: 0.000
+	weight: 0.419, max_weight: 0.700, min_weight: 0.300
+	v: 75.333, max_v: 108.743, min_v: 7.353
+	q1: 75.225, max_q1: 108.258, min_q1: 6.208
+	q2: 75.182, max_q2: 108.116, min_q2: 6.697
+	target_q: 75.371, max_target_q: 108.571, min_target_q: 7.479
+
+2023-03-21 00:34:40 - 
+[#Step 860000] eval_reward: 2.577, eval_time: 5.324, time: 36.482
+	critic_loss: 0.865, max_critic_loss: 10.768, min_critic_loss: 0.000
+	actor_loss: -81.502, max_actor_loss: -34.846, min_actor_loss: -107.476
+	value_loss: 0.187, max_value_loss: 13.427, min_value_loss: 0.000
+	weight: 0.466, max_weight: 0.700, min_weight: 0.300
+	v: 75.671, max_v: 107.707, min_v: 33.900
+	q1: 75.500, max_q1: 107.492, min_q1: 35.579
+	q2: 75.438, max_q2: 107.543, min_q2: 33.570
+	target_q: 75.566, max_target_q: 107.625, min_target_q: 35.760
+
+2023-03-21 00:35:05 - 
+[#Step 870000] eval_reward: 3.870, eval_time: 5.459, time: 36.890
+	critic_loss: 0.843, max_critic_loss: 21.865, min_critic_loss: 0.001
+	actor_loss: -83.041, max_actor_loss: -35.210, min_actor_loss: -108.200
+	value_loss: 0.299, max_value_loss: 26.585, min_value_loss: 0.000
+	weight: 0.453, max_weight: 0.700, min_weight: 0.300
+	v: 78.155, max_v: 109.015, min_v: 32.251
+	q1: 77.963, max_q1: 108.398, min_q1: 34.460
+	q2: 78.023, max_q2: 108.399, min_q2: 34.370
+	target_q: 78.173, max_target_q: 108.566, min_target_q: 34.054
+
+2023-03-21 00:35:29 - 
+[#Step 880000] eval_reward: 3.277, eval_time: 5.366, time: 37.298
+	critic_loss: 0.992, max_critic_loss: 16.627, min_critic_loss: 0.000
+	actor_loss: -82.328, max_actor_loss: -7.262, min_actor_loss: -109.044
+	value_loss: 0.327, max_value_loss: 30.393, min_value_loss: 0.000
+	weight: 0.436, max_weight: 0.700, min_weight: 0.300
+	v: 77.169, max_v: 108.789, min_v: 8.961
+	q1: 77.034, max_q1: 109.479, min_q1: 7.028
+	q2: 77.100, max_q2: 109.624, min_q2: 7.410
+	target_q: 77.241, max_target_q: 109.338, min_target_q: 9.031
+
+2023-03-21 00:35:54 - 
+[#Step 890000] eval_reward: 2.406, eval_time: 5.362, time: 37.704
+	critic_loss: 0.958, max_critic_loss: 45.864, min_critic_loss: 0.001
+	actor_loss: -79.029, max_actor_loss: -7.544, min_actor_loss: -108.293
+	value_loss: 0.330, max_value_loss: 36.188, min_value_loss: 0.000
+	weight: 0.448, max_weight: 0.700, min_weight: 0.300
+	v: 73.067, max_v: 108.570, min_v: 7.539
+	q1: 72.926, max_q1: 108.379, min_q1: 7.162
+	q2: 72.971, max_q2: 108.196, min_q2: 6.906
+	target_q: 73.005, max_target_q: 108.136, min_target_q: 7.543
+
+2023-03-21 00:36:13 - Saving checkpoint at step: 180
+2023-03-21 00:36:13 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_180
+2023-03-21 00:36:13 - Saving checkpoint at step: 180
+2023-03-21 00:36:13 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_180
+2023-03-21 00:36:13 - Saving checkpoint at step: 180
+2023-03-21 00:36:13 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_180
+2023-03-21 00:36:18 - 
+[#Step 900000] eval_reward: 2.336, eval_time: 5.331, time: 38.108
+	critic_loss: 0.813, max_critic_loss: 32.385, min_critic_loss: 0.001
+	actor_loss: -82.210, max_actor_loss: -44.661, min_actor_loss: -108.410
+	value_loss: 0.150, max_value_loss: 3.435, min_value_loss: 0.000
+	weight: 0.456, max_weight: 0.700, min_weight: 0.300
+	v: 76.221, max_v: 108.125, min_v: 44.892
+	q1: 76.117, max_q1: 108.234, min_q1: 43.984
+	q2: 76.158, max_q2: 108.162, min_q2: 44.044
+	target_q: 76.223, max_target_q: 108.339, min_target_q: 43.221
+
+2023-03-21 00:36:43 - 
+[#Step 910000] eval_reward: 2.454, eval_time: 5.529, time: 38.516
+	critic_loss: 0.988, max_critic_loss: 21.721, min_critic_loss: 0.002
+	actor_loss: -81.506, max_actor_loss: -42.973, min_actor_loss: -108.222
+	value_loss: 0.202, max_value_loss: 8.049, min_value_loss: 0.000
+	weight: 0.425, max_weight: 0.700, min_weight: 0.300
+	v: 75.905, max_v: 107.728, min_v: 43.795
+	q1: 75.864, max_q1: 107.703, min_q1: 42.738
+	q2: 75.846, max_q2: 107.535, min_q2: 44.148
+	target_q: 75.845, max_target_q: 107.282, min_target_q: 41.962
+
+2023-03-21 00:37:07 - 
+[#Step 920000] eval_reward: 2.896, eval_time: 5.456, time: 38.927
+	critic_loss: 1.065, max_critic_loss: 32.822, min_critic_loss: 0.000
+	actor_loss: -82.241, max_actor_loss: -6.853, min_actor_loss: -108.887
+	value_loss: 0.126, max_value_loss: 7.787, min_value_loss: 0.000
+	weight: 0.533, max_weight: 0.700, min_weight: 0.300
+	v: 76.469, max_v: 108.232, min_v: 6.307
+	q1: 76.720, max_q1: 108.802, min_q1: 6.702
+	q2: 76.691, max_q2: 108.804, min_q2: 6.725
+	target_q: 76.533, max_target_q: 108.248, min_target_q: 6.514
+
+2023-03-21 00:37:31 - 
+[#Step 930000] eval_reward: 2.575, eval_time: 5.381, time: 39.332
+	critic_loss: 0.971, max_critic_loss: 20.813, min_critic_loss: 0.000
+	actor_loss: -82.029, max_actor_loss: -39.556, min_actor_loss: -108.057
+	value_loss: 0.219, max_value_loss: 18.029, min_value_loss: 0.000
+	weight: 0.422, max_weight: 0.700, min_weight: 0.300
+	v: 76.367, max_v: 108.387, min_v: 42.983
+	q1: 76.195, max_q1: 108.476, min_q1: 41.133
+	q2: 76.220, max_q2: 108.619, min_q2: 40.737
+	target_q: 76.243, max_target_q: 107.858, min_target_q: 41.851
+
+2023-03-21 00:37:56 - 
+[#Step 940000] eval_reward: 3.178, eval_time: 5.302, time: 39.734
+	critic_loss: 0.579, max_critic_loss: 14.805, min_critic_loss: 0.001
+	actor_loss: -81.777, max_actor_loss: -7.429, min_actor_loss: -108.564
+	value_loss: 0.218, max_value_loss: 30.876, min_value_loss: 0.000
+	weight: 0.467, max_weight: 0.700, min_weight: 0.300
+	v: 75.900, max_v: 108.863, min_v: 7.175
+	q1: 75.996, max_q1: 109.148, min_q1: 7.242
+	q2: 75.970, max_q2: 108.901, min_q2: 7.259
+	target_q: 75.819, max_target_q: 107.826, min_target_q: 7.303
+
+2023-03-21 00:38:20 - 
+[#Step 950000] eval_reward: 5.131, eval_time: 5.394, time: 40.141
+	critic_loss: 0.820, max_critic_loss: 51.953, min_critic_loss: 0.000
+	actor_loss: -79.240, max_actor_loss: -8.222, min_actor_loss: -107.004
+	value_loss: 0.231, max_value_loss: 22.627, min_value_loss: 0.000
+	weight: 0.436, max_weight: 0.700, min_weight: 0.300
+	v: 73.206, max_v: 107.849, min_v: 7.404
+	q1: 73.044, max_q1: 107.103, min_q1: 8.087
+	q2: 73.029, max_q2: 107.147, min_q2: 7.955
+	target_q: 73.039, max_target_q: 107.574, min_target_q: 7.450
+
+2023-03-21 00:38:35 - 
+[#Step 955000] eval_reward: 2.459, eval_time: 5.373, time: 40.389
+	critic_loss: 1.154, max_critic_loss: 13.890, min_critic_loss: 0.010
+	actor_loss: -79.835, max_actor_loss: -29.826, min_actor_loss: -107.456
+	value_loss: 0.576, max_value_loss: 67.338, min_value_loss: 0.000
+	weight: 0.492, max_weight: 0.700, min_weight: 0.300
+	v: 73.780, max_v: 108.875, min_v: 27.295
+	q1: 73.567, max_q1: 107.958, min_q1: 28.332
+	q2: 73.500, max_q2: 107.974, min_q2: 27.588
+	target_q: 73.809, max_target_q: 108.496, min_target_q: 26.930
+
+2023-03-21 00:38:50 - 
+[#Step 960000] eval_reward: 5.150, eval_time: 5.298, time: 40.639
+	critic_loss: 1.078, max_critic_loss: 43.389, min_critic_loss: 0.001
+	actor_loss: -80.722, max_actor_loss: -7.490, min_actor_loss: -108.425
+	value_loss: 0.418, max_value_loss: 30.959, min_value_loss: 0.000
+	weight: 0.484, max_weight: 0.700, min_weight: 0.300
+	v: 75.110, max_v: 108.247, min_v: 8.033
+	q1: 75.149, max_q1: 108.640, min_q1: 9.744
+	q2: 75.182, max_q2: 108.679, min_q2: 7.862
+	target_q: 74.969, max_target_q: 107.730, min_target_q: 6.929
+
+2023-03-21 00:39:05 - 
+[#Step 965000] eval_reward: 3.266, eval_time: 5.362, time: 40.887
+	critic_loss: 1.028, max_critic_loss: 39.501, min_critic_loss: 0.001
+	actor_loss: -82.610, max_actor_loss: -18.172, min_actor_loss: -108.135
+	value_loss: 0.316, max_value_loss: 12.880, min_value_loss: 0.000
+	weight: 0.503, max_weight: 0.700, min_weight: 0.300
+	v: 76.358, max_v: 108.489, min_v: 13.946
+	q1: 76.369, max_q1: 108.279, min_q1: 9.984
+	q2: 76.436, max_q2: 108.292, min_q2: 13.045
+	target_q: 76.686, max_target_q: 108.715, min_target_q: 13.908
+
+2023-03-21 00:39:20 - 
+[#Step 970000] eval_reward: 3.759, eval_time: 5.368, time: 41.135
+	critic_loss: 1.078, max_critic_loss: 21.911, min_critic_loss: 0.001
+	actor_loss: -81.173, max_actor_loss: -6.790, min_actor_loss: -107.991
+	value_loss: 0.174, max_value_loss: 7.405, min_value_loss: 0.000
+	weight: 0.456, max_weight: 0.700, min_weight: 0.300
+	v: 75.322, max_v: 108.074, min_v: 7.960
+	q1: 75.209, max_q1: 107.646, min_q1: 6.645
+	q2: 75.315, max_q2: 107.844, min_q2: 6.750
+	target_q: 75.148, max_target_q: 108.048, min_target_q: 7.108
+
+2023-03-21 00:39:35 - 
+[#Step 975000] eval_reward: 2.568, eval_time: 5.310, time: 41.383
+	critic_loss: 0.854, max_critic_loss: 23.968, min_critic_loss: 0.000
+	actor_loss: -79.887, max_actor_loss: -6.648, min_actor_loss: -108.459
+	value_loss: 0.216, max_value_loss: 12.659, min_value_loss: 0.000
+	weight: 0.436, max_weight: 0.700, min_weight: 0.300
+	v: 73.856, max_v: 108.667, min_v: 6.813
+	q1: 73.774, max_q1: 108.384, min_q1: 6.543
+	q2: 73.756, max_q2: 108.368, min_q2: 7.031
+	target_q: 73.895, max_target_q: 108.695, min_target_q: 6.176
+
+2023-03-21 00:39:44 - Saving checkpoint at step: 196
+2023-03-21 00:39:44 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_196
+2023-03-21 00:39:44 - Saving checkpoint at step: 196
+2023-03-21 00:39:44 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_196
+2023-03-21 00:39:44 - Saving checkpoint at step: 196
+2023-03-21 00:39:44 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_196
+2023-03-21 00:39:49 - 
+[#Step 980000] eval_reward: 4.967, eval_time: 5.417, time: 41.630
+	critic_loss: 1.172, max_critic_loss: 29.660, min_critic_loss: 0.001
+	actor_loss: -80.155, max_actor_loss: -7.259, min_actor_loss: -107.438
+	value_loss: 0.134, max_value_loss: 6.426, min_value_loss: 0.000
+	weight: 0.484, max_weight: 0.700, min_weight: 0.300
+	v: 73.689, max_v: 107.401, min_v: 6.019
+	q1: 73.853, max_q1: 107.725, min_q1: 7.229
+	q2: 73.850, max_q2: 107.613, min_q2: 7.122
+	target_q: 73.636, max_target_q: 107.368, min_target_q: 6.639
+
+2023-03-21 00:39:59 - Saving checkpoint at step: 197
+2023-03-21 00:39:59 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_197
+2023-03-21 00:39:59 - Saving checkpoint at step: 197
+2023-03-21 00:39:59 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_197
+2023-03-21 00:39:59 - Saving checkpoint at step: 197
+2023-03-21 00:39:59 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_197
+2023-03-21 00:40:04 - 
+[#Step 985000] eval_reward: 3.172, eval_time: 5.328, time: 41.877
+	critic_loss: 0.752, max_critic_loss: 9.721, min_critic_loss: 0.001
+	actor_loss: -80.087, max_actor_loss: -7.272, min_actor_loss: -106.751
+	value_loss: 0.145, max_value_loss: 3.943, min_value_loss: 0.000
+	weight: 0.511, max_weight: 0.700, min_weight: 0.300
+	v: 74.685, max_v: 107.103, min_v: 7.030
+	q1: 74.724, max_q1: 107.077, min_q1: 7.030
+	q2: 74.644, max_q2: 107.033, min_q2: 7.130
+	target_q: 74.640, max_target_q: 107.253, min_target_q: 6.635
+
+2023-03-21 00:40:14 - Saving checkpoint at step: 198
+2023-03-21 00:40:14 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_198
+2023-03-21 00:40:14 - Saving checkpoint at step: 198
+2023-03-21 00:40:14 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_198
+2023-03-21 00:40:14 - Saving checkpoint at step: 198
+2023-03-21 00:40:14 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_198
+2023-03-21 00:40:19 - 
+[#Step 990000] eval_reward: 3.380, eval_time: 5.269, time: 42.125
+	critic_loss: 0.825, max_critic_loss: 19.928, min_critic_loss: 0.000
+	actor_loss: -81.476, max_actor_loss: -6.753, min_actor_loss: -106.839
+	value_loss: 0.092, max_value_loss: 1.402, min_value_loss: 0.000
+	weight: 0.444, max_weight: 0.700, min_weight: 0.300
+	v: 76.434, max_v: 107.345, min_v: 7.124
+	q1: 76.290, max_q1: 107.413, min_q1: 6.590
+	q2: 76.314, max_q2: 107.403, min_q2: 6.985
+	target_q: 76.453, max_target_q: 107.733, min_target_q: 6.787
+
+2023-03-21 00:40:29 - Saving checkpoint at step: 199
+2023-03-21 00:40:29 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_199
+2023-03-21 00:40:29 - Saving checkpoint at step: 199
+2023-03-21 00:40:29 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_199
+2023-03-21 00:40:29 - Saving checkpoint at step: 199
+2023-03-21 00:40:29 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_199
+2023-03-21 00:40:34 - 
+[#Step 995000] eval_reward: 3.886, eval_time: 5.365, time: 42.379
+	critic_loss: 0.871, max_critic_loss: 15.774, min_critic_loss: 0.000
+	actor_loss: -80.537, max_actor_loss: -6.933, min_actor_loss: -109.113
+	value_loss: 0.291, max_value_loss: 17.725, min_value_loss: 0.000
+	weight: 0.408, max_weight: 0.700, min_weight: 0.300
+	v: 74.195, max_v: 109.410, min_v: 7.611
+	q1: 74.099, max_q1: 109.340, min_q1: 6.800
+	q2: 74.140, max_q2: 109.356, min_q2: 7.213
+	target_q: 74.032, max_target_q: 108.853, min_target_q: 6.876
+
+2023-03-21 00:40:44 - Saving checkpoint at step: 200
+2023-03-21 00:40:44 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/actor_200
+2023-03-21 00:40:44 - Saving checkpoint at step: 200
+2023-03-21 00:40:44 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/critic_200
+2023-03-21 00:40:44 - Saving checkpoint at step: 200
+2023-03-21 00:40:44 - Saved checkpoint at saved_models/halfcheetah-medium-expert-v2/riql_s2_20230320_235812/value_200
+2023-03-21 00:40:49 - 
+[#Step 1000000] eval_reward: 3.332, eval_time: 5.343, time: 42.628
+	critic_loss: 0.686, max_critic_loss: 17.341, min_critic_loss: 0.000
+	actor_loss: -83.069, max_actor_loss: -47.054, min_actor_loss: -107.255
+	value_loss: 0.177, max_value_loss: 14.626, min_value_loss: 0.000
+	weight: 0.422, max_weight: 0.700, min_weight: 0.300
+	v: 77.405, max_v: 107.901, min_v: 45.578
+	q1: 77.464, max_q1: 108.061, min_q1: 45.552
+	q2: 77.416, max_q2: 107.616, min_q2: 45.095
+	target_q: 77.366, max_target_q: 107.893, min_target_q: 45.578
+
+2023-03-21 00:40:49 - 
+Avg eval reward = 3.59
+

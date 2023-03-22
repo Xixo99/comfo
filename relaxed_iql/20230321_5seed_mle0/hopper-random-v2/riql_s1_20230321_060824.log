@@ -1,0 +1,23 @@
+2023-03-21 06:08:24 - Exp configurations:
+algo: riql
+alpha: 5.0
+batch_size: 256
+env_name: hopper-random-v2
+eval_episodes: 10
+eval_freq: 5000
+expectile: 0.7
+gamma: 0.99
+hidden_dims: !!python/tuple
+- 256
+- 256
+initializer: orthogonal
+log_dir: 20230321_5seed_mle0
+lr: 0.0003
+max_timesteps: 1000000
+mle_alpha: 0.0
+model_dir: saved_models
+num_random: 10
+seed: 1
+tau: 0.005
+temperature: 3.0
+

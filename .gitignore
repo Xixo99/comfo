@@ -5,3 +5,4 @@ imgs
 tests
 logs*
 tmp*
+*.txt

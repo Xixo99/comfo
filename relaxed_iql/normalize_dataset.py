@@ -39,7 +39,7 @@ if __name__ == '__main__':
     os.makedirs('configs', exist_ok=True)
     res = []
     for env_name in [f'{i}-{j}-v2' for i in ['hopper', 'halfcheetah', 'walker2d'] for j in [
-            'medium', 'medium-replay', 'medium-expert']]:
+            'random','expert','medium', 'medium-replay', 'medium-expert']]:
         min_traj_reward, max_traj_reward = get_minmax_traj_reward(env_name)
         res.append((env_name, min_traj_reward, max_traj_reward))
     res_df = pd.DataFrame(res, columns=['env_name', 'min_traj_reward', 'max_traj_reward'])

@@ -1,5 +1,5 @@
 from utils import ReplayBuffer, get_logger
-from models import COMFO3Agent
+from models import COMFO8Agent
 from tqdm import trange
 import pandas as pd
 import time
@@ -55,7 +55,7 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
     act_dim = env.action_space.shape[0]
     max_action = env.action_space.high[0]
 
-    agent = COMFO3Agent(obs_dim=obs_dim,
+    agent = COMFO8Agent(obs_dim=obs_dim,
                         act_dim=act_dim,
                         max_action=max_action,
                         hidden_dims=configs.hidden_dims,
@@ -67,6 +67,7 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
                         temperature=configs.temperature,
                         max_timesteps=configs.max_timesteps,
                         mle_alpha=configs.mle_alpha,
+                        noise_scale = configs.noise_scale,
                         conservative_weight=configs.conservative_weight,
                         initializer=configs.initializer)
 
@@ -83,7 +84,7 @@ def train_and_evaluate(configs: ml_collections.ConfigDict):
         log_info = agent.update(batch)
 
         # Save every 1e5 steps & last 5 checkpoints
-        if (t % 100000 == 0) or (t >= int(9.8e5) and t % 5000 == 0):
+        if (t >= int(9.8e5) and t % 5000 == 0):
             agent.save(f"{ckpt_dir}", t // 5000)
 
         if (t > int(9.5e5) and (t % configs.eval_freq == 0)) or (t <= int(9.5e5) and t % (2*configs.eval_freq) == 0):

@@ -3,8 +3,8 @@ import ml_collections
 
 def get_config():
     config = ml_collections.ConfigDict()
-    config.env_name = "halfcheetah-medium-expert-v2"
-    info = "20230227/extra_exp_1,1"
+    config.env_name = "halfcheetah-medium-v2"
+    info = "20230317_5seeds"
     config.log_dir = f"logs/{info}"
     config.algo = "comfo8"
     config.model_dir = f"saved_models/{info}"
@@ -15,10 +15,11 @@ def get_config():
     config.tau = 0.005
     config.gamma = 0.99
     config.alpha = 5.0
-    config.conservative_weight = 1.0
+    config.conservative_weight = 0.1
     config.mle_alpha = 1.0
     config.expectile = 0.7
     config.temperature = 3.0
+    config.noise_scale = 0.001
     config.batch_size = 256
     config.eval_episodes = 10
     config.num_random = 10
